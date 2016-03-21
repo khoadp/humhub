@@ -46,7 +46,7 @@ use yii\helpers\Url;
                     <?php echo $form->field($model, 'rememberMe')->checkbox(); ?>
                     <hr>
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <?php
                             echo \humhub\widgets\AjaxButton::widget([
                                 'label' => Yii::t('UserModule.views_auth_login', 'Sign in'),
@@ -60,11 +60,16 @@ use yii\helpers\Url;
                                     'class' => 'btn btn-primary',
                                     'id' => 'loginBtn'
                                 ]
-                            ]);
-                            ?>
+                            ]);?>
+                        </div>
+                        <div class="col-md-5">
+                            <a class="btn btn-primary btn-social btn-facebook" href="/social_login/social/auth?authclient=facebook"
+                               onclick="window.open('/social_login/social/auth?authclient=facebook', 'newwindow', 'width=860, height=480'); return false;">
+                                Sign in with Facebook
+                            </a>
                         </div>
 
-                        <div class="col-md-8 text-right">
+                        <div class="col-md-5 text-right">
                             <small>
                                 <?php echo Yii::t('UserModule.views_auth_login', 'Forgot your password?'); ?>
                                 <br/>
@@ -88,12 +93,6 @@ use yii\helpers\Url;
                     </div>
 
                     <?php ActiveForm::end(); ?>
-                </div>
-                <br>
-                <div class="row">
-                    <?= yii\authclient\widgets\AuthChoice::widget([
-                        'baseAuthUrl' => ['/social_login/social/auth']
-                    ]); ?>
                 </div>
 
                 <?php if ($canRegister) : ?>
