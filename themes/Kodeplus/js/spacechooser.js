@@ -1,7 +1,72 @@
 /**
  * Handling space chooser user input
  */
+function printObject(o) {
+    var out = '';
+    for (var p in o) {
+        out += p + ': ' + o[p] + '\n';
+    }
+    alert(out);
+}
+var is_search=false;
+var scroll_curpage = 1;
+var scroll_iscontinue = true;
+var html = '<li class="loadingmore">Loading...</li>';
 
+function getMorePage(keyword) {
+    $.ajax({
+        url: '/spacex/spacex/get-more-space',
+        type: 'get',
+        async: false,
+        data: {
+            page: scroll_curpage,
+            keyword: keyword
+        },
+        beforeSend: function() {
+            // setting a timeout
+            $("#other").append(html);
+        },
+        success: function (data) {
+            $(".loadingmore").remove();
+            if (data == 'none') {
+                scroll_iscontinue = false;
+                return;
+            }
+
+            $("#other").append(data);
+            scroll_curpage++;
+            return data;
+        },
+        error: function () {
+            $(".loadingmore").remove();
+            return 'none';
+        }
+    });
+}
+function resetPage(keyword)
+{
+    $('#other').html('');
+    scroll_curpage=1;
+    scroll_iscontinue = true;
+    getMorePage(keyword);
+}
+$(document).ajaxSend(function (event, request, settings) {
+    if (settings.type == "POST" && settings.url.indexOf('request-membership-form') != -1) {
+        $('#space-menu-search').val('');
+        resetPage('');
+    }
+});
+getMorePage('');
+
+/*$("#space-menu-spaces").niceScroll().scrollend(function (info) {
+    if (scroll_iscontinue == true && $("#other").hasClass('active')) {
+        var scroll = $(this);
+        if (scroll[0].scroll.y >= scroll[0].scrollvaluemax - 10) {
+            getMorePage('');
+        }
+
+    }
+});*/
 $(document).ready(function () {
 
     var chosen = []; // Array for visible space menu entries
@@ -63,7 +128,12 @@ $(document).ready(function () {
             return false;
 
         } else if (event.keyCode == 13) {
-
+            if($('#other').hasClass('active'))
+            {
+                var input = $(this).val().toLowerCase();
+                resetPage(input);
+                is_search=true;
+            }
             // check if one space is selected
             if ($('#space-menu-spaces li').hasClass("selected")) {
 
@@ -95,7 +165,8 @@ $(document).ready(function () {
 
 
                 // lowercase and save space strings in variable
-                var str = $(this).text().toLowerCase();
+                var text= $(this).find('.spacename').text() + $(this).find('.spacedescription').text();
+                var str = text.toLowerCase();
 
                 if (str.search(input) == -1) {
                     // hide elements when not matched
@@ -109,6 +180,7 @@ $(document).ready(function () {
                 }
 
             });
+
             $(".tab-pane li").each(function (index) {
 
                 // remove selected classes from all space entries
@@ -116,7 +188,8 @@ $(document).ready(function () {
 
 
                 // lowercase and save space strings in variable
-                var str = $(this).text().toLowerCase();
+                var text= $(this).find('.spacename').text() + $(this).find('.spacedescription').text();
+                var str = text.toLowerCase();
 
                 if (str.search(input) == -1) {
                     // hide elements when not matched
@@ -138,6 +211,14 @@ $(document).ready(function () {
             if (input.length == 0) {
                 // reset inputs
                 resetSpaceSearch();
+                if(is_search==true)
+                {
+                    if($("#other").hasClass('active'))
+                    {
+                        is_search=false;
+                        resetPage('');
+                    }
+                }
             } else {
                 // show search reset icon
                 $('#space-search-reset').fadeIn('fast');

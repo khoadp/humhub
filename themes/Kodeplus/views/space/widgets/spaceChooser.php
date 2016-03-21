@@ -78,14 +78,18 @@ $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
                                             ]
                                         ]); ?>
                                         <div class="media-body">
-                                            <strong><?php echo Html::encode($membership->space->name); ?></strong>
+                                            <div class="spacename" style="display:inline-block;">
+                                                <strong><?php echo Html::encode($membership->space->name); ?></strong>
+                                            </div>
                                             <?php if ($newItems != 0): ?>
                                                 <div class="badge badge-space pull-right"
                                                      style="display:none"><?php echo $newItems; ?></div>
                                             <?php endif; ?>
                                             <br>
 
+                                            <div class="spacedescription">
                                             <p><?php echo Html::encode(Helpers::truncateText($membership->space->description, 60)); ?></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </a>
@@ -126,65 +130,4 @@ $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
     jQuery('.badge-space').fadeIn('slow');
     jQuery('#mytab a:first').tab('show');
 
-    function printObject(o) {
-        var out = '';
-        for (var p in o) {
-            out += p + ': ' + o[p] + '\n';
-        }
-        alert(out);
-    }
-
-    var scroll_curpage = 1;
-    var scroll_iscontinue = true;
-    var html = '<li class="loadingmore">Loading...</li>';
-
-    function getMorePage() {
-        $("#other").append(html);
-        $.ajax({
-            url: '/spacex/spacex/get-more-space',
-            type: 'get',
-            data: {
-                page: scroll_curpage
-            },
-            success: function (data) {
-                $(".loadingmore").remove();
-                if (data == 'none') {
-                    scroll_iscontinue = false;
-                    return;
-                }
-
-                $("#other").append(data);
-                scroll_curpage++;
-                return data;
-            },
-            error: function () {
-                $(".loadingmore").remove();
-                return 'none';
-            }
-        });
-    }
-    $(document).ajaxSend(function (event, request, settings) {
-        if (settings.type == "POST" && settings.url.indexOf('request-membership-form') != -1) {
-            $('#other').html('');
-            scroll_curpage=1;
-            scroll_iscontinue = true;
-            getMorePage();
-        }
-    });
-    getMorePage();
-
-    $("#space-menu-spaces").niceScroll().scrollend(function (info) {
-        if (scroll_iscontinue == true && $("#other").hasClass('active')) {
-
-            var scroll = $(this);
-            if (scroll[0].scroll.y >= scroll[0].scrollvaluemax - 10) {
-                getMorePage();
-            }
-
-        }
-    });
-
-    /*$(document).on('click', '.membership-btn', function() {
-        window.last_membership_btn=$(this);
-    });*/
 </script>
