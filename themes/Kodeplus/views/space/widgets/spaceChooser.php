@@ -88,7 +88,7 @@ $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
                                             <br>
 
                                             <div class="spacedescription">
-                                            <p><?php echo Html::encode(Helpers::truncateText($membership->space->description, 60)); ?></p>
+                                                <p><?php echo Html::encode(Helpers::truncateText($membership->space->description, 60)); ?></p>
                                             </div>
                                         </div>
                                     </div>

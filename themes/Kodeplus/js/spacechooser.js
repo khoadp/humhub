@@ -8,7 +8,7 @@ function printObject(o) {
     }
     alert(out);
 }
-var is_search=false;
+var is_search = false;
 var scroll_curpage = 1;
 var scroll_iscontinue = true;
 var html = '<li class="loadingmore">Loading...</li>';
@@ -22,7 +22,7 @@ function getMorePage(keyword) {
             page: scroll_curpage,
             keyword: keyword
         },
-        beforeSend: function() {
+        beforeSend: function () {
             // setting a timeout
             $("#other").append(html);
         },
@@ -43,10 +43,9 @@ function getMorePage(keyword) {
         }
     });
 }
-function resetPage(keyword)
-{
+function resetPage(keyword) {
     $('#other').html('');
-    scroll_curpage=1;
+    scroll_curpage = 1;
     scroll_iscontinue = true;
     getMorePage(keyword);
 }
@@ -59,14 +58,14 @@ $(document).ajaxSend(function (event, request, settings) {
 getMorePage('');
 
 /*$("#space-menu-spaces").niceScroll().scrollend(function (info) {
-    if (scroll_iscontinue == true && $("#other").hasClass('active')) {
-        var scroll = $(this);
-        if (scroll[0].scroll.y >= scroll[0].scrollvaluemax - 10) {
-            getMorePage('');
-        }
+ if (scroll_iscontinue == true && $("#other").hasClass('active')) {
+ var scroll = $(this);
+ if (scroll[0].scroll.y >= scroll[0].scrollvaluemax - 10) {
+ getMorePage('');
+ }
 
-    }
-});*/
+ }
+ });*/
 $(document).ready(function () {
 
     var chosen = []; // Array for visible space menu entries
@@ -128,11 +127,10 @@ $(document).ready(function () {
             return false;
 
         } else if (event.keyCode == 13) {
-            if($('#other').hasClass('active'))
-            {
+            if ($('#other').hasClass('active')) {
                 var input = $(this).val().toLowerCase();
                 resetPage(input);
-                is_search=true;
+                is_search = true;
             }
             // check if one space is selected
             if ($('#space-menu-spaces li').hasClass("selected")) {
@@ -165,7 +163,7 @@ $(document).ready(function () {
 
 
                 // lowercase and save space strings in variable
-                var text= $(this).find('.spacename').text() + $(this).find('.spacedescription').text();
+                var text = $(this).find('.spacename').text() + $(this).find('.spacedescription').text();
                 var str = text.toLowerCase();
 
                 if (str.search(input) == -1) {
@@ -188,7 +186,7 @@ $(document).ready(function () {
 
 
                 // lowercase and save space strings in variable
-                var text= $(this).find('.spacename').text() + $(this).find('.spacedescription').text();
+                var text = $(this).find('.spacename').text() + $(this).find('.spacedescription').text();
                 var str = text.toLowerCase();
 
                 if (str.search(input) == -1) {
@@ -211,11 +209,9 @@ $(document).ready(function () {
             if (input.length == 0) {
                 // reset inputs
                 resetSpaceSearch();
-                if(is_search==true)
-                {
-                    if($("#other").hasClass('active'))
-                    {
-                        is_search=false;
+                if (is_search == true) {
+                    if ($("#other").hasClass('active')) {
+                        is_search = false;
                         resetPage('');
                     }
                 }
