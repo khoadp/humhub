@@ -1,0 +1,117 @@
+.panel.panel-profile .tabs {
+    padding: 0;
+    overflow: visible;
+}
+.panel.panel-profile .panel-body {
+    padding: 0 10px;
+}
+.panel-profile-controls .col-md-12 > .pull-right {
+    margin: 3px 0 6px;
+}
+div.panel-profile .panel-profile-header .profile-user-photo-container {
+    bottom: -47px;
+}
+div.tabs-style-iconbox nav ul li.tab-current a::after {
+    border-width: 0;
+}
+/**-----Tabs-----*/
+div.tabs-style-iconbox nav ul li a {
+    padding: 0 5px 0;
+}
+div.tabs-style-iconbox nav ul li a:hover {
+    background-color: #ededed;
+    color: #555;
+}
+.tabs .fa {
+    z-index: 10;
+    display: block;
+    margin: 0;
+    padding-top: 3px;
+    vertical-align: middle;
+    text-transform: none;
+    font-weight: normal;
+    font-variant: normal;
+    font-size: 1.3em;
+    line-height: 1;
+    speak: none;
+    -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.tabs-style-iconbox nav ul li a span {
+    text-align: center;
+}
+.tabs nav ul li {
+    min-width: 125px;
+}
+div.tabs nav ul li {
+    padding: 0;
+}
+div.tabs-style-iconbox nav ul li:first-child::before,
+div.tabs-style-iconbox nav ul li::after {
+    height: 100%;
+    top: 0;
+    right: -1px;
+}
+.tabs-style-iconbox nav ul li.tab-current a {
+    background: #2CC185;
+    color: #fff;
+}
+#more_tab_profile {
+    position: relative;
+    z-index: 2;
+}
+#more_tab_profile .tab_pulldown_contents .fa {
+    padding-top: 5px;
+}
+#more_tab_profile .tab_pulldown_contents {
+    float: left;
+    position: absolute;
+    top: 42px;
+    display: none;
+}
+#more_tab_profile .tab_pulldown_contents {
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.3);
+    min-width: 100%;
+}
+#more_tab_profile .tab_pulldown_contents ul {
+    padding-left: 0;
+}
+#more_tab_profile .tab_pulldown_contents ul li {
+    background-color: #fff;
+    border-bottom: 1px solid #f2f0f0;
+    font-size: 15px;
+    white-space: nowrap;
+}
+div.tabs nav a {
+    padding: 0;
+    height: 42px;
+    line-height: 39px;
+}
+div.tabs nav a span {
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+@media (max-width: 767px) {
+    div.panel-profile-controls {
+        padding-left: 160px !important;
+        padding-top: 0;
+    }
+}
+
+@media (max-width: 510px) {
+    .panel-body div.panel-profile-controls {
+        padding-left: 0 !important;
+        padding-top: 50px;
+    }
+    .pull-left {
+        margin-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    div.tabs nav ul li {
+        min-width: 135px;
+    }
+}

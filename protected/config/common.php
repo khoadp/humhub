@@ -17,6 +17,12 @@ $config = [
                 ],
             ],
         ],
+        'bitly' => [
+            'class' => 'kodeplus\\modules\\announcement\\components\\VGBitly',
+            'login' => getenv('BITLY_LOGIN'),
+            'apiKey' => getenv('BITLY_API_KEY'),
+            'format' => getenv('BITLY_FORMAT'),
+        ],
         'urlManager' => [
             'showScriptName' => false,
             'enablePrettyUrl' => true,
