@@ -45,11 +45,12 @@ function getMorePage(keyword) {
 }
 function resetPage(keyword) {
     $('#other').html('');
+    is_search = false;
     scroll_curpage = 1;
     scroll_iscontinue = true;
     getMorePage(keyword);
 }
-$(document).ajaxSend(function (event, request, settings) {
+$(document).ajaxComplete(function (event, request, settings) {
     if (settings.type == "POST" && settings.url.indexOf('request-membership-form') != -1) {
         $('#space-menu-search').val('');
         resetPage('');
