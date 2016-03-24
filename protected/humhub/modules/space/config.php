@@ -11,7 +11,7 @@ return [
     'class' => \humhub\modules\space\Module::className(),
     'isCoreModule' => true,
     'urlManagerRules' => [
-        ['class' => 'humhub\modules\space\components\UrlRule']
+        ['class' => 'kodeplus\modules\kodeplus_space\components\KodeplusUrlRule']
     ],
     'modules' => [
         'manage' => [
