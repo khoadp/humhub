@@ -15,7 +15,7 @@ var html = '<li class="loadingmore">Loading...</li>';
 
 function getMorePage(keyword) {
     $.ajax({
-        url: '/spacex/spacex/get-more-space',
+        url: '/kodeplus_space/spacex/get-more-space',
         type: 'get',
         async: false,
         data: {
