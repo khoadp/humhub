@@ -51,19 +51,18 @@ $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
                     <nav style="display: block;">
                         <ul id="mytab">
                             <li class="active">
-                                <a href="#" data-target="#owner" data-toggle="tab"
+                                <a class="btn-owner" href="#" data-target="#owner" data-toggle="tab"
                                    style="border-left: none"><span>OWNER</span></a>
                             </li>
                             <li>
-                                <a href="#" data-target="#other" data-toggle="tab"><span>OTHER</span></a>
+                                <a class="btn-other" href="#" data-target="#other" data-toggle="tab"><span>OTHER</span></a>
                             </li>
                         </ul>
                     </nav>
                 </form>
             </div>
             <ul class="media-list notLoaded pull-left" id="space-menu-spaces">
-                <div class="tab-content">
-                    <div class="tab-pane active" id="owner">
+                    <div class="tab-pane" id="owner">
                         <?php foreach ($memberships as $membership): ?>
                             <?php $newItems = $membership->countNewItems(); ?>
                             <li>
@@ -100,7 +99,6 @@ $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
                     <div class="tab-pane" id="other">
 
                     </div>
-                </div>
 
 
             </ul>
@@ -118,8 +116,6 @@ $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
 </li>
 
 <script type="text/javascript">
-
-    // set niceScroll to SpaceChooser menu
     $("#space-menu-spaces").niceScroll({
         cursorwidth: "7",
         cursorborder: "",
@@ -129,5 +125,18 @@ $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
     });
     jQuery('.badge-space').fadeIn('slow');
     jQuery('#mytab a:first').tab('show');
-
+    $('.btn-owner').click(function()
+    {
+        $('#other').removeClass('active');
+        $('#other').hide();
+        $('#owner').addClass('active');
+        $('#owner').show();
+    });
+    $('.btn-other').click(function()
+    {
+        $('#other').addClass('active');
+        $('#other').show();
+        $('#owner').removeClass('active');
+        $('#owner').hide();
+    });
 </script>
