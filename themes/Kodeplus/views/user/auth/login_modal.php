@@ -3,6 +3,7 @@
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
+
 ?>
 <div class="modal-dialog modal-dialog-small animated fadeIn">
     <div class="modal-content">
@@ -32,13 +33,15 @@ use yii\helpers\Url;
             <div class="row">
                 <div class="col-md-6 text-center">
                     <a class="btn btn-block btn-social btn-facebook"
-                       href="/kodeplus_user/social/auth?authclient=facebook">
+                       href="/kodeplus_user/social/auth?authclient=facebook"
+                       onclick="window.open('/kodeplus_user/social/auth?authclient=facebook', 'newwindow', 'width=500, height=450'); return false;">
                         <i class="fa fa-facebook"></i>Sign in with Facebook
                     </a>
                 </div>
                 <div class="col-md-6 text-center">
                     <a class="btn btn-block btn-social btn-google-plus"
-                       href="/kodeplus_user/social/auth?authclient=google">
+                       href="/kodeplus_user/social/auth?authclient=google"
+                       onclick="window.open('/kodeplus_user/social/auth?authclient=google', 'newwindow', 'width=500, height=450'); return false;">
                         <i class="fa fa-google-plus"></i>Sign in with Google
                     </a>
                 </div>
