@@ -15,6 +15,11 @@ $config = [
                     'clientId' => getenv('FACEBOOK_CLIENT_ID'),
                     'clientSecret' => getenv('FACEBOOK_CLIENT_SECRET'),
                 ],
+                'google' => [
+                    'class' => 'yii\authclient\clients\GoogleOAuth',
+                    'clientId' => getenv('GOOGLE_CLIENT_ID'),
+                    'clientSecret' => getenv('GOOGLE_CLIENT_SECRET'),
+                ],
             ],
         ],
         'bitly' => [
