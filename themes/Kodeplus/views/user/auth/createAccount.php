@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use humhub\modules\user\models\User;
 use yii\base\Event;
+
 $this->pageTitle = Yii::t('UserModule.views_auth_createAccount', 'Create Account');
 ?>
 <div class="modal" id="globalModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
