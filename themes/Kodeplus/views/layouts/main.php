@@ -112,12 +112,7 @@ AppAsset::register($this);
             </div>
             <div class="topbar-actions pull-right" style="margin: 1%">
                 <?php
-                if (!Yii::$app->user->isGuest) {
-                    ?>
-                    <a href="/kodeplus_user/language/index?language=en"><i>EN</i></a>|<a
-                        href="/kodeplus_user/language/index?language=vi"><i>VN</i></a>
-                    <?php
-                }
+                echo \kodeplus\modules\kodeplus_user\widgets\Language::widget();
                 ?>
 
             </div>
