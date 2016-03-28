@@ -32,6 +32,10 @@ $config = [
             'showScriptName' => false,
             'enablePrettyUrl' => true,
         ],
+
+    ],
+    'bootstrap' => [
+        'kodeplus\modules\kodeplus_user\components\EventBootstrap',
     ]
 ];
 
