@@ -84,12 +84,13 @@ AppAsset::register($this);
 
     <style>
 
-        #search-menu-nav{
+        #search-menu-nav {
             width: 31.7%;
             margin-top: 0.7%;
         }
+
         @media only screen and (max-width: 500px) {
-            #search-menu-nav{
+            #search-menu-nav {
                 width: 100%;
                 margin-top: -0.3%;
             }
@@ -109,13 +110,25 @@ AppAsset::register($this);
             <div class="topbar-actions pull-right">
                 <?php echo \humhub\modules\user\widgets\AccountTopMenu::widget(); ?>
             </div>
+            <div class="topbar-actions pull-right" style="margin: 1%">
+                <?php
+                if (!Yii::$app->user->isGuest) {
+                    ?>
+                    <a href="/kodeplus_user/language/index?language=en"><i>EN</i></a>|<a
+                        href="/kodeplus_user/language/index?language=vi"><i>VN</i></a>
+                    <?php
+                }
+                ?>
 
+            </div>
             <div class="notifications pull-right">
 
                 <?php
-                echo \humhub\widgets\NotificationArea::widget(['widgets' => [
-                    [\humhub\modules\notification\widgets\Overview::className(), [], ['sortOrder' => 10]],
-                ]]);
+                echo \humhub\widgets\NotificationArea::widget([
+                    'widgets' => [
+                        [\humhub\modules\notification\widgets\Overview::className(), [], ['sortOrder' => 10]],
+                    ]
+                ]);
                 ?>
 
             </div>
@@ -138,17 +151,19 @@ AppAsset::register($this);
             </ul>
 
             <ul class="nav pull-right" id="search-menu-nav">
-                    <?php echo Html::beginForm(Url::to(['/search/search/index']), 'GET'); ?>
-                    <div class="form-group form-group-search">
+                <?php echo Html::beginForm(Url::to(['/search/search/index']), 'GET'); ?>
+                <div class="form-group form-group-search">
 
-                        <?php echo Html::textInput('keyword', '', array('class' => 'form-control form-search', 'id' => 'search-input-field')); ?>
+                    <?php echo Html::textInput('keyword', '',
+                        array('class' => 'form-control form-search', 'id' => 'search-input-field')); ?>
 
-                        <?php echo Html::submitButton(\humhub\widgets\TopMenuRightStack::widget(), array('class' => 'btn btn-default btn-sm form-button-search')); ?>
+                    <?php echo Html::submitButton(\humhub\widgets\TopMenuRightStack::widget(),
+                        array('class' => 'btn btn-default btn-sm form-button-search')); ?>
 
                     <?php echo Html::endForm(); ?>
-                    </div>
+                </div>
 
-<!--                --><?php //echo \humhub\widgets\TopMenuRightStack::widget(); ?>
+                <!--                --><?php //echo \humhub\widgets\TopMenuRightStack::widget(); ?>
             </ul>
         </div>
     </div>
