@@ -35,6 +35,7 @@
         "creocoder/yii2-nested-sets": "0.9.*",
         "yiisoft/yii2-authclient": "*",
         "vlucas/phpdotenv" : "*"
+        "2amigos/yii2-ckeditor-widget" : "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
