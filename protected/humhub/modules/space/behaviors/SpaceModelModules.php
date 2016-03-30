@@ -40,7 +40,7 @@ class SpaceModelModules extends Behavior
 
         $this->_availableModules = array();
 
-        foreach (Yii::$app->moduleManager->getModules() as $moduleId => $module) {
+        foreach (Yii::$app->moduleManager->getModules(['includeCoreModules' => true]) as $moduleId => $module) {
             if ($module instanceof ContentContainerModule && Yii::$app->hasModule($module->id) && $module->hasContentContainerType(Space::className())) {
                 $this->_availableModules[$module->id] = $module;
             }
