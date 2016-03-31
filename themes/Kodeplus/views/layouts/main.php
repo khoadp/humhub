@@ -9,8 +9,7 @@ use yii\helpers\Url;
 
 AppAsset::register($this);
 
-$space = $this->context->contentContainer;
-if ($space->isModuleEnabled('classified')) {
+if (Yii::$app->hasModule('classified')) {
     \kodeplus\modules\classified\GalleryAsset::register($this);
     \kodeplus\modules\classified\DosamigosAsset::register($this);
 }
