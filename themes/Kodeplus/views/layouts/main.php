@@ -3,12 +3,17 @@
 use yii\helpers\Html;
 use humhub\assets\AppAsset;
 use yii\helpers\Url;
-use humhub\modules\search\controllers\SearchController;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
 
 AppAsset::register($this);
+
+$space = $this->context->contentContainer;
+if ($space->isModuleEnabled('classified')) {
+    \kodeplus\modules\classified\GalleryAsset::register($this);
+    \kodeplus\modules\classified\DosamigosAsset::register($this);
+}
 //$keyword = Yii::$app->request->get('keyword', "");
 ?>
 <?php $this->beginPage() ?>
