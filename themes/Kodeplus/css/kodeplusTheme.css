@@ -174,3 +174,30 @@ div.tabs nav a span {
 .social-class li{margin-bottom:4px}.social-class li:hover .social-hex{opacity:1}
 .social-class li:hover code{background-color:#e8e8ee}
 .social-class code{cursor:default}
+
+.forum_statistics_item {
+    float: left;
+    margin-left: 20px;
+    padding-bottom: 20px;
+    font-size: 12px;
+    width: 95px;
+}
+.forum_statistics_icon{
+    display: inline-block;
+}
+.forum_statistics_name{
+    display: inline-block;
+}
+.forum_statistics_number
+{
+
+}
+.forum_statistics_number
+{
+    color: #6fdbe8;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: .8em;
+    padding-bottom: 5px;
+
+}

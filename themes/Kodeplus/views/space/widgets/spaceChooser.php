@@ -96,7 +96,7 @@ $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
 
                         <?php endforeach; ?>
                     </div>
-                    <div class="tab-pane" id="other">
+                    <div class="tab-pane" id="other" style="display: none">
 
                     </div>
 
