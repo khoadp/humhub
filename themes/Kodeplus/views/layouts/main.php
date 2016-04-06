@@ -13,6 +13,20 @@ if (Yii::$app->hasModule('classified')) {
     \kodeplus\modules\classified\GalleryAsset::register($this);
     \kodeplus\modules\classified\DosamigosAsset::register($this);
 }
+
+if (!isset($this->context->contentContainer)) {
+    if (isset($_SESSION['views'])) {
+        unset($_SESSION['views']);
+    }
+} else {
+    if (isset($_SESSION['space'])){
+        if ($_SESSION['space'] !== $this->context->contentContainer->id)
+        if (isset($_SESSION['views'])) {
+            unset($_SESSION['views']);
+            unset($_SESSION['space']);
+        }
+    }
+}
 //$keyword = Yii::$app->request->get('keyword', "");
 ?>
 <?php $this->beginPage() ?>
