@@ -15,8 +15,9 @@ if (Yii::$app->hasModule('classified')) {
 }
 
 if (!isset($this->context->contentContainer)) {
-    if (isset($_SESSION['views'])) {
+    if (isset($_SESSION['views']) && isset($_SESSION['space'])) {
         unset($_SESSION['views']);
+        unset($_SESSION['space']);
     }
 } else {
     if (isset($_SESSION['space'])){
