@@ -35,7 +35,9 @@ $config = [
 
     ],
     'bootstrap' => [
-        'kodeplus\modules\kodeplus_user\components\EventBootstrap',
+        'kodeplus\modules\kodeplus_space\components\EventBootstrap',
+        'kodeplus\modules\kodeplus_user\components\EventBootstrap'
+
     ]
 ];
 
