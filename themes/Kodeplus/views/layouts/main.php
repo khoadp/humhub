@@ -13,6 +13,9 @@ if (Yii::$app->hasModule('classified')) {
     \kodeplus\modules\classified\GalleryAsset::register($this);
     \kodeplus\modules\classified\DosamigosAsset::register($this);
 }
+if (Yii::$app->hasModule('map')) {
+    \kodeplus\modules\map\library\MapAssets::register($this);
+}
 
 if (!isset($this->context->contentContainer)) {
     if (isset($_SESSION['views']) && isset($_SESSION['space'])) {
