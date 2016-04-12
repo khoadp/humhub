@@ -39,7 +39,10 @@
         "insolita/yii2-iconpicker": "dev-master",
         "vova07/yii2-imperavi-widget": "*",
         "kartik-v/yii2-widget-rating": "*",
-        "2amigos/yii2-google-maps-library" : "*"
+        "2amigos/yii2-google-maps-library" : "*",
+        "kartik-v/yii2-editable": "*",
+        "kartik-v/yii2-mpdf": "*",
+        "kartik-v/yii2-grid": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
