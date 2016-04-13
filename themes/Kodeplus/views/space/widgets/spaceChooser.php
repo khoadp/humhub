@@ -28,7 +28,8 @@ $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
 
         <?php
         if (!$currentSpace) {
-            echo '<i class="fa fa-dot-circle-o"></i><br>' . Yii::t('SpaceModule.widgets_views_spaceChooser', 'My spaces');
+            echo '<i class="fa fa-dot-circle-o"></i><br>' . Yii::t('SpaceModule.widgets_views_spaceChooser',
+                    'My spaces');
         }
         ?>
         <!-- end: Show space image and name if chosen -->
@@ -39,7 +40,8 @@ $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
             <form action="" class="dropdown-controls"><input type="text" id="space-menu-search"
                                                              class="form-control"
                                                              autocomplete="off"
-                                                             placeholder="<?php echo Yii::t('SpaceModule.widgets_views_spaceChooser', 'Search'); ?>">
+                                                             placeholder="<?php echo Yii::t('SpaceModule.widgets_views_spaceChooser',
+                                                                 'Search'); ?>">
 
 
             </form>
@@ -62,56 +64,66 @@ $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
                 </form>
             </div>
             <ul class="media-list notLoaded pull-left" id="space-menu-spaces">
-                    <div class="tab-pane" id="owner">
-                        <?php foreach ($memberships as $membership): ?>
-                            <?php $newItems = $membership->countNewItems(); ?>
-                            <li>
-                                <a href="<?php echo $membership->space->getUrl(); ?>">
-                                    <div class="media">
-                                        <!-- Show space image -->
-                                        <?php echo \humhub\modules\space\widgets\Image::widget([
-                                            'space' => $membership->space,
-                                            'width' => 24,
-                                            'htmlOptions' => [
-                                                'class' => 'pull-left',
-                                            ]
-                                        ]); ?>
-                                        <div class="media-body">
-                                            <div class="spacename" style="display:inline-block;">
-                                                <strong><?php echo Html::encode($membership->space->name); ?></strong>
-                                            </div>
-                                            <?php if ($newItems != 0): ?>
-                                                <div class="badge badge-space pull-right"
-                                                     style="display:none"><?php echo $newItems; ?></div>
-                                            <?php endif; ?>
-                                            <br>
+                <div class="tab-pane" id="owner">
+                    <?php foreach ($memberships as $membership): ?>
+                        <?php $newItems = $membership->countNewItems(); ?>
+                        <li>
+                            <a href="<?php echo $membership->space->getUrl(); ?>">
+                                <div class="media">
+                                    <!-- Show space image -->
+                                    <?php echo \humhub\modules\space\widgets\Image::widget([
+                                        'space' => $membership->space,
+                                        'width' => 24,
+                                        'htmlOptions' => [
+                                            'class' => 'pull-left',
+                                        ]
+                                    ]); ?>
+                                    <div class="media-body">
+                                        <div class="spacename" style="display:inline-block;">
+                                            <strong><?php echo Html::encode($membership->space->name); ?></strong>
+                                        </div>
+                                        <?php if ($newItems != 0): ?>
+                                            <div class="badge badge-space pull-right"
+                                                 style="display:none"><?php echo $newItems; ?></div>
+                                        <?php endif; ?>
+                                        <br>
 
-                                            <div class="spacedescription">
-                                                <p><?php echo Html::encode(Helpers::truncateText($membership->space->description, 60)); ?></p>
-                                            </div>
+                                        <div class="spacedescription">
+                                            <p><?php echo Html::encode(Helpers::truncateText($membership->space->description,
+                                                    60)); ?></p>
                                         </div>
                                     </div>
-                                </a>
-                            </li>
+                                </div>
+                            </a>
+                        </li>
 
-                        <?php endforeach; ?>
-                    </div>
-                    <div class="tab-pane" id="other" style="display: none">
+                    <?php endforeach; ?>
+                </div>
+                <div class="tab-pane" id="other" style="display: none">
 
-                    </div>
+                </div>
 
 
             </ul>
         </li>
-        <?php if ($canCreateSpace): ?>
+
+        <?php
+        if (($canCreateSpace && getenv('ALLOW_CREATE_SPACE') == 'true')
+            || (getenv('ALLOW_CREATE_SPACE') == 'false' && Yii::$app->user->getIdentity()->super_admin == 1)
+        ) {
+            ?>
             <li>
                 <div class="dropdown-footer">
                     <?php
-                    echo Html::a(Yii::t('SpaceModule.widgets_views_spaceChooser', 'Create new space'), Url::to(['/space/create/create']), array('class' => 'btn btn-info col-md-12', 'data-target' => '#globalModal'));
+                    echo Html::a(Yii::t('SpaceModule.widgets_views_spaceChooser', 'Create new space'),
+                        Url::to(['/space/create/create']),
+                        array('class' => 'btn btn-info col-md-12', 'data-target' => '#globalModal'));
                     ?>
                 </div>
             </li>
-        <?php endif; ?>
+            <?php
+        }
+        ?>
     </ul>
 </li>
 
@@ -125,15 +137,13 @@ $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
     });
     jQuery('.badge-space').fadeIn('slow');
     jQuery('#mytab a:first').tab('show');
-    $('.btn-owner').click(function()
-    {
+    $('.btn-owner').click(function () {
         $('#other').removeClass('active');
         $('#other').hide();
         $('#owner').addClass('active');
         $('#owner').show();
     });
-    $('.btn-other').click(function()
-    {
+    $('.btn-other').click(function () {
         $('#other').addClass('active');
         $('#other').show();
         $('#owner').removeClass('active');
