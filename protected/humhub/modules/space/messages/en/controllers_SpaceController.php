@@ -17,9 +17,9 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Create new space' => '',
-  'My spaces' => 'Spaces',
-  'Search' => '',
-  'Yo spaces' => '',
-  'Other spaces' => '',
+  'As owner you cannot revoke your membership!' => '',
+  'Could not request membership!' => '',
+  'There is no pending invite!' => '',
+  'This action is only available for workspace members!' => '',
+  'You are not allowed to join this space!' => '',
 );

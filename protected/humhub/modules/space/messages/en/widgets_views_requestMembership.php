@@ -17,9 +17,8 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Create new space' => '',
-  'My spaces' => 'Spaces',
-  'Search' => '',
-  'Yo spaces' => '',
-  'Other spaces' => '',
+  'Cancel' => '',
+  'Please shortly introduce yourself, to become a approved member of this workspace.' => '',
+  'Request workspace membership' => '',
+  'Send' => '',
 );

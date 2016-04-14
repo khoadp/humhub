@@ -17,9 +17,7 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Create new space' => '',
-  'My spaces' => 'Spaces',
-  'Search' => '',
-  'Yo spaces' => '',
-  'Other spaces' => '',
+  '<strong>Request</strong> space membership' => '',
+  'Close' => '',
+  'Your request was successfully submitted to the space administrators.' => '',
 );

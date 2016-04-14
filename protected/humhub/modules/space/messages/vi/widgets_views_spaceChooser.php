@@ -1,6 +1,8 @@
 <?php
 return array (
-  'Create new space' => '',
-  'My spaces' => '',
+  'Create new space' => 'Tạo space',
+  'My spaces' => 'Spaces',
   'Search' => 'Tìm kiếm',
+  'Yo spaces' => '',
+  'Other spaces' => '',
 );

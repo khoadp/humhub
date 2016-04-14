@@ -17,9 +17,5 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Create new space' => '',
-  'My spaces' => 'Spaces',
-  'Search' => '',
-  'Yo spaces' => '',
-  'Other spaces' => '',
+  '{userName} accepted your invite for the space {spaceName}' => '',
 );

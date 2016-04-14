@@ -17,9 +17,10 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
-  'Create new space' => '',
-  'My spaces' => 'Spaces',
-  'Search' => '',
-  'Yo spaces' => '',
-  'Other spaces' => '',
+  'Invites' => '',
+  'New user by e-mail (comma separated)' => '',
+  'User is already member!' => '',
+  'User not found!' => '',
+  '{email} is already registered!' => '',
+  '{email} is not valid!' => '',
 );
