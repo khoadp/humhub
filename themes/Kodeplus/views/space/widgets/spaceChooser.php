@@ -54,10 +54,12 @@ $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
                         <ul id="mytab">
                             <li class="active">
                                 <a class="btn-owner" href="#" data-target="#owner" data-toggle="tab"
-                                   style="border-left: none"><span>OWNER</span></a>
+                                   style="border-left: none"><span><?php echo Yii::t('SpaceModule.widgets_views_spaceChooser',
+                                            'Yo spaces'); ?></span></a>
                             </li>
                             <li>
-                                <a class="btn-other" href="#" data-target="#other" data-toggle="tab"><span>OTHER</span></a>
+                                <a class="btn-other" href="#" data-target="#other" data-toggle="tab"><span><?php echo Yii::t('SpaceModule.widgets_views_spaceChooser',
+                                            'Other spaces'); ?></span></a>
                             </li>
                         </ul>
                     </nav>

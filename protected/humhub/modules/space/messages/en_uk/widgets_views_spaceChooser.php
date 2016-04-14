@@ -18,6 +18,8 @@
  */
 return array (
   'Create new space' => '',
-  'My spaces' => '',
+  'My spaces' => 'Spaces',
   'Search' => '',
+  'Yo spaces' => '',
+  'Other spaces' => '',
 );
