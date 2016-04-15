@@ -54,6 +54,7 @@ class Space extends ContentContainerActiveRecord implements \humhub\modules\sear
     const USERGROUP_MEMBER = 'member';
     const USERGROUP_USER = 'user';
     const USERGROUP_GUEST = 'guest';
+    const USERGROUP_INVITED_MODERATOR = 'invited_moderator';
 
     /**
      * @inheritdoc
@@ -476,7 +477,8 @@ class Space extends ContentContainerActiveRecord implements \humhub\modules\sear
             self::USERGROUP_ADMIN => 'Administrators',
             self::USERGROUP_MODERATOR => 'Moderators',
             self::USERGROUP_MEMBER => 'Members',
-            self::USERGROUP_USER => 'Users'
+            self::USERGROUP_USER => 'Users',
+            self::USERGROUP_INVITED_MODERATOR => 'Invited Moderator'
         ];
 
         // Add guest groups if enabled
