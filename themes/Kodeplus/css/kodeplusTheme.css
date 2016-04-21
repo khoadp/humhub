@@ -57,31 +57,35 @@ div.tabs-style-iconbox nav ul li::after {
     background: #2CC185;
     color: #fff;
 }
+div.tabs-style-iconbox nav ul li a span {
+    font-size: 11px;
+}
 #more_tab_profile {
     position: relative;
-    z-index: 2;
+    z-index: 200;
 }
-#more_tab_profile .tab_pulldown_contents .fa {
+#more_tab_profile > ul.dropdown-menu {
+    min-width: 100px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+#more_tab_profile > ul.dropdown-menu > li {
+    border-left-width: 0;
+}
+#more_tab_profile > ul.dropdown-menu > li:hover {
+    border-left-width: 3px;
+}
+#more_tab_profile > ul.dropdown-menu > li:last-child {
+    margin-bottom: 0;
+}
+div.tabs-style-iconbox nav ul li a:hover {
+    border-bottom: 3px solid #6fdbe8;
+    background-color: #f7f7f7;
+    color: #555;
+}
+#more_tab_profile ul.dropdown-menu .fa {
     padding-top: 5px;
-}
-#more_tab_profile .tab_pulldown_contents {
-    float: left;
-    position: absolute;
-    top: 42px;
-    display: none;
-}
-#more_tab_profile .tab_pulldown_contents {
-    box-shadow: 0 3px 8px 0 rgba(0,0,0,0.3);
-    min-width: 100%;
-}
-#more_tab_profile .tab_pulldown_contents ul {
-    padding-left: 0;
-}
-#more_tab_profile .tab_pulldown_contents ul li {
-    background-color: #fff;
-    border-bottom: 1px solid #f2f0f0;
-    font-size: 15px;
-    white-space: nowrap;
+    margin: 0 auto;
 }
 div.tabs nav a {
     padding: 0;
@@ -115,6 +119,36 @@ div.tabs nav a span {
         min-width: 135px;
     }
 }
+
+@media only screen and (max-width: 1192px) {
+    div.tabs-style-iconbox.tabs-space nav ul li a {
+        font-size: 14px;
+    }
+    div.tabs-style-iconbox.tabs-space nav ul li a span {
+        font-size: 10px;
+    }
+    div.tabs-style-iconbox nav ul li > a:hover {
+        border-bottom: none;
+    }
+}
+
+@media only screen and (min-width: 1193px) {
+    div.tabs-style-iconbox nav ul #more_tab_profile a:hover {
+        border-bottom: none;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .panel-profile-controls .col-md-12 > .pull-right > .btn {
+        display: block;
+        margin-top: -48px;
+        margin-bottom: 10px;
+    }
+    .panel-profile-controls .col-md-12 > .pull-right > .btn-group {
+        float: right;
+    }
+}
+
 
 .btn-social{position:relative;padding-left:44px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.btn-social :first-child{position:absolute;left:0;top:0;bottom:0;width:32px;line-height:34px;font-size:1.6em;text-align:center;border-right:1px solid rgba(0,0,0,0.2)}
 .btn-social.btn-lg{padding-left:61px}.btn-social.btn-lg :first-child{line-height:45px;width:45px;font-size:1.8em}
