@@ -111,7 +111,7 @@ if (!isset($this->context->contentContainer)) {
             margin-top: 0.7%;
         }
 
-        @media only screen and (max-width: 500px) {
+        @media only screen and (max-width: 300px) {
             #search-menu-nav {
                 width: 100%;
                 margin-top: -0.3%;
