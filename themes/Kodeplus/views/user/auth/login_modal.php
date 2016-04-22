@@ -28,27 +28,13 @@ use yii\helpers\Url;
                         </li>
                     </ul>
                 </div>
-                <br/>
             <?php endif; ?>
-            <div class="row">
-                <div class="col-md-6 text-center">
-                    <a class="btn btn-block btn-social btn-facebook"
-                       href="/kodeplus_user/social/auth?authclient=facebook"
-                       onclick="window.open('/kodeplus_user/social/auth?authclient=facebook', 'newwindow', 'width=500, height=450'); return false;">
-                        <i class="fa fa-facebook"></i>Sign in with Facebook
-                    </a>
-                </div>
-                <div class="col-md-6 text-center">
-                    <a class="btn btn-block btn-social btn-google-plus"
-                       href="/kodeplus_user/social/auth?authclient=google"
-                       onclick="window.open('/kodeplus_user/social/auth?authclient=google', 'newwindow', 'width=500, height=450'); return false;">
-                        <i class="fa fa-google-plus"></i>Sign in with Google
-                    </a>
-                </div>
-            </div>
-            <div class="tab-content">
 
-                <br>
+            <?php
+            echo \kodeplus\modules\kodeplus_user\widgets\Social::widget();
+            ?>
+
+            <div class="tab-content">
                 <div class="tab-pane <?php echo (!isset($_POST['AccountRegister'])) ? "active" : ""; ?>" id="login">
 
                     <?php $form = ActiveForm::begin(); ?>
@@ -85,9 +71,9 @@ use yii\helpers\Url;
                                     'class' => 'btn btn-primary',
                                     'id' => 'loginBtn'
                                 ]
-                            ]); ?>
+                            ]);
+                            ?>
                         </div>
-
                         <div class="col-md-8 text-right">
                             <small>
                                 <?php echo Yii::t('UserModule.views_auth_login', 'Forgot your password?'); ?>
