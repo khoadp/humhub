@@ -25,6 +25,7 @@ class CreateComment extends \humhub\libs\BasePermission
         Space::USERGROUP_MODERATOR,
         Space::USERGROUP_MEMBER,
         Space::USERGROUP_USER,
+        Space::USERGROUP_INVITED_MODERATOR
     ];
 
     /**

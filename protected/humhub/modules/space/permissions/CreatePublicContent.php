@@ -24,6 +24,7 @@ class CreatePublicContent extends \humhub\libs\BasePermission
         Space::USERGROUP_ADMIN,
         Space::USERGROUP_MODERATOR,
         Space::USERGROUP_MEMBER,
+        Space::USERGROUP_INVITED_MODERATOR
     ];
 
     /**
