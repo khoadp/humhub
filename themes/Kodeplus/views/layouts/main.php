@@ -108,13 +108,20 @@ if (!isset($this->context->contentContainer)) {
 
         #search-menu-nav {
             width: 31.7%;
-            margin-top: 0.7%;
+            margin-top: 8px;
         }
 
-        @media only screen and (max-width: 300px) {
+        @media only screen and (max-width: 370px) {
             #search-menu-nav {
                 width: 100%;
                 margin-top: -0.3%;
+            }
+        }
+
+        @media only screen and (min-width: 371px) and (max-width: 700px) {
+            #search-menu-nav {
+                width: 45%;
+                margin-top: 8px%;
             }
         }
     </style>
