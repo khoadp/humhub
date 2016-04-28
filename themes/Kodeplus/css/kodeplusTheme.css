@@ -69,6 +69,7 @@ div.tabs-style-iconbox nav ul li a span {
     padding-top: 0;
     padding-bottom: 0;
     width: 127px;
+    border-radius: 1px;
 }
 #more_tab_profile > ul.dropdown-menu > li:last-child {
     margin-bottom: 0;
