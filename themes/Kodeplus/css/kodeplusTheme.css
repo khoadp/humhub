@@ -107,6 +107,9 @@ div.tabs nav a span {
     padding: 0;
     box-shadow: none;
 }
+div[class*="wall_kodeplusmodulesmapmodelsCategory"] a[id^="deleteLinkPost_modal_postdelete"] {
+    display: none;
+}
 
 @media (max-width: 767px) {
     div.panel-profile-controls {
