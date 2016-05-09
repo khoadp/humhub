@@ -48,8 +48,8 @@ $this->pageTitle = Yii::t('UserModule.views_auth_createAccount', 'Create Account
     <?php endforeach; ?>
 
     var html = '<div class="form-group field-user-term required">'
-        + '<input  type="checkbox" id="terms" name="term_status"/> <?= Yii::t('KodeplusSpaceModule.term', 'By checking this box, you agree to the') ?> '
-        + '<a href="#" class="term_view_btn"><?= Yii::t('KodeplusSpaceModule.term', 'terms and conditions') ?></a>.'
+        + '<input  type="checkbox" id="terms" name="term_status"/> <?= Yii::t('KodeplusUserModule.term', 'By checking this box, you agree to the') ?> '
+        + '<a href="#" class="term_view_btn"><?= Yii::t('KodeplusUserModule.term', 'terms and conditions') ?></a>.'
         + '<div class="help-block"></div>'
         + '</div>';
     $('.field-profile-lastname').after(html);
@@ -61,7 +61,7 @@ $this->pageTitle = Yii::t('UserModule.views_auth_createAccount', 'Create Account
 
         } else {
             $('.field-user-term').addClass('has-error');
-            $('.field-user-term .help-block').html('<?= Yii::t('KodeplusSpaceModule.term', 'You need to agree to our terms and conditions.') ?>');
+            $('.field-user-term .help-block').html('<?= Yii::t('KodeplusUserModule.term', 'You need to agree to our terms and conditions.') ?>');
             e.preventDefault();
         }
 
