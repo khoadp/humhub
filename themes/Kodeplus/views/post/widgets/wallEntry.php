@@ -3,25 +3,23 @@
 use yii\helpers\Html;
 
 $richOutput = humhub\widgets\RichText::widget(['text' => $post->message, 'record' => $post]);
+use kodeplus\modules\kodeplus_space\widgets\LinkExtract;
+
 ?>
 
 <span id="post-content-<?php echo $post->id; ?>" style="overflow: hidden; margin-bottom: 5px;">
     <?php print $richOutput; ?>
 </span>
+
 <a class="more-link-post hidden" id="more-link-post-<?php echo $post->id; ?>" data-state="down"
    style="margin: 20px 0 20px 0;" href="javascript:showMore(<?php echo $post->id; ?>);"><i
         class="fa fa-arrow-down"></i> <?php echo Yii::t('PostModule.widgets_views_post', 'Read full post...'); ?>
 </a>
-<?php
-echo \kodeplus\modules\kodeplus_space\widgets\LinkExtract::widget(array(
-   'id' => 'post-content-' . $post->id,
-));
-?>
 <script type="text/javascript">
-<?php if ($justEdited): ?>
-        $('#post-content-<?php echo $post->id; ?>').addClass('highlight');
-        $('#post-content-<?php echo $post->id; ?>').delay(200).animate({backgroundColor: 'transparent'}, 1000);
-<?php endif; ?>
+    <?php if ($justEdited): ?>
+    $('#post-content-<?php echo $post->id; ?>').addClass('highlight');
+    $('#post-content-<?php echo $post->id; ?>').delay(200).animate({backgroundColor: 'transparent'}, 1000);
+    <?php endif; ?>
 
     $(document).ready(function () {
 
@@ -75,3 +73,9 @@ echo \kodeplus\modules\kodeplus_space\widgets\LinkExtract::widget(array(
     }
 
 </script>
+<br>
+<?php
+if (getenv('ALLOW_LINK_PREVIEW') == 'true') {
+    echo LinkExtract::widget(['content' => $post->message]);
+}
+?>
