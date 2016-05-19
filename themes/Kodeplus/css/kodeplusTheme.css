@@ -113,6 +113,9 @@ div.tabs nav a span {
 div[class*="wall_kodeplusmodulesmapmodelsCategory"] a[id^="deleteLinkPost_modal_postdelete"] {
     display: none;
 }
+div.required label:after {
+    color: red;
+}
 
 @media (max-width: 767px) {
     div.panel-profile-controls {
