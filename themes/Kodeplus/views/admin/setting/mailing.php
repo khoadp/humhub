@@ -18,7 +18,7 @@ use humhub\modules\user\models\User;
                 <a href="<?php echo Url::to(['mailing-server']); ?>"><?php echo Yii::t('AdminModule.views_setting_mailing', 'Server Settings'); ?></a>
             </li>
             <li class>
-                <a href="/kodeplus_user/email-test"><?php echo Yii::t('KodeplusUserModule.email_test', 'Email Test'); ?></a>
+                <a href="/kodeplus_user/email-test"><?php echo Yii::t('KodeplusUserModule.email_test', 'Send Email'); ?></a>
             </li>
         </ul>
 
