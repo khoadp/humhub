@@ -36,7 +36,7 @@
         "yiisoft/yii2-authclient": "*",
         "vlucas/phpdotenv" : "*",
         "2amigos/yii2-gallery-widget": "~1.0",
-        "insolita/yii2-iconpicker": "dev-master",
+        "insolita/yii2-iconpicker": "~1.0",
         "vova07/yii2-imperavi-widget": "*",
         "kartik-v/yii2-widget-rating": "*",
         "2amigos/yii2-google-maps-library" : "*",
@@ -85,4 +85,3 @@
         }
     }
 }
-
