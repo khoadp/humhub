@@ -219,6 +219,13 @@ if (!isset($this->context->contentContainer)) {
     <?php echo \humhub\models\Setting::GetText('trackingHtmlCode'); ?>
     <?php $this->endBody() ?>
     <!-- start : facebook messenger -->
+    <?php
+    $language = 'en_us';
+    if (!empty(Yii::$app->user->language)) {
+        $language = Yii::$app->user->language;
+        if ($language == 'vi') $language .= '_VN';
+    }
+    ?>
     <script>
         window.fbAsyncInit = function () {
             FB.init({
@@ -236,7 +243,7 @@ if (!isset($this->context->contentContainer)) {
             }
             js = d.createElement(s);
             js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
+            js.src = "//connect.facebook.net/<?= $language ?>/sdk.js";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
 
