@@ -23,12 +23,12 @@ if (!isset($this->context->contentContainer)) {
         unset($_SESSION['space']);
     }
 } else {
-    if (isset($_SESSION['space'])){
+    if (isset($_SESSION['space'])) {
         if ($_SESSION['space'] !== $this->context->contentContainer->id)
-        if (isset($_SESSION['views'])) {
-            unset($_SESSION['views']);
-            unset($_SESSION['space']);
-        }
+            if (isset($_SESSION['views'])) {
+                unset($_SESSION['views']);
+                unset($_SESSION['space']);
+            }
     }
 }
 //$keyword = Yii::$app->request->get('keyword', "");
@@ -218,6 +218,44 @@ if (!isset($this->context->contentContainer)) {
 
     <?php echo \humhub\models\Setting::GetText('trackingHtmlCode'); ?>
     <?php $this->endBody() ?>
+    <!-- start : facebook messenger -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: "<?= getenv('FACEBOOK_CLIENT_ID') ?>",
+                xfbml: true,
+                version: "v2.6"
+            });
+
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+    </script>
+
+    <div class="fb-messengermessageus"
+         messenger_app_id="<?= getenv('FACEBOOK_CLIENT_ID') ?>"
+         page_id="<?= getenv('FACEBOOK_MESSENGER_PAGE_ID') ?>"
+         color="blue"
+         size="large">
+    </div>
+    <style>
+        .fb-messengermessageus {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+        }
+    </style>
+    <!-- end : facebook messenger -->
     </body>
     </html>
 <?php $this->endPage() ?>
