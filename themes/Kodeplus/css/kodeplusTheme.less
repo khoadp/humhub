@@ -1,0 +1,40 @@
+// Color variables (appears count calculates by raw css)
+
+
+// Width variables (appears count calculates by raw css)
+@width0: 100%; // Appears 3 times
+
+// Height variables (appears count calculates by raw css)
+@height0: 45px; // Appears 3 times
+
+div.tabs-space {
+  nav {
+    ul {
+      li:hover {
+        &::after {
+          border-bottom: 3px solid @info;
+          height: @height0;
+          width: @width0;
+        }
+      }
+      li:active {
+        &::after {
+          border-bottom: 3px solid @info;
+          height: @height0;
+          width: @width0;
+        }
+      }
+      li:focus {
+        &::after {
+          border-bottom: 3px solid @info;
+          height: @height0;
+          width: @width0;
+        }
+      }
+    }
+  }
+}
+
+#create-space-btn:hover{
+  background: @primary!important;
+}

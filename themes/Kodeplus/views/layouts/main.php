@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use humhub\assets\AppAsset;
 use yii\helpers\Url;
+use humhub\models\Setting;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -127,6 +128,26 @@ if (!isset($this->context->contentContainer)) {
     </style>
 
     <body>
+    <?php
+    $primaryColor = '#708fa0';
+    $infoColor = '#6fdbe8';
+    if (Setting::Get('primaryColor')) {
+        $primaryColor = Setting::Get('primaryColor');
+        $infoColor = Setting::Get('primaryColor');
+    }
+    echo '<script>window.primaryColor = "' . $primaryColor . '";</script>';
+    if (isset($this->context->contentContainer)) {
+        $infoColor = $this->context->contentContainer->color;
+    }
+    echo '<script>window.infoColor = "' . $infoColor . '";</script>';
+
+    ?>
+    <script>
+        less.modifyVars({
+            '@primary': window.primaryColor,
+            '@info': window.infoColor
+        });
+    </script>
     <?php $this->beginBody() ?>
 
     <!-- start: first top navigation bar -->

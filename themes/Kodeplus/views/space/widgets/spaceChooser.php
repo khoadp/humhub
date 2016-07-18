@@ -119,7 +119,7 @@ $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
                     <?php
                     echo Html::a(Yii::t('SpaceModule.widgets_views_spaceChooser', 'Create new space'),
                         Url::to(['/space/create/create']),
-                        array('class' => 'btn btn-info col-md-12', 'data-target' => '#globalModal'));
+                        array('class' => 'btn btn-primary col-md-12', 'data-target' => '#globalModal', 'id' => 'create-space-btn'));
                     ?>
                 </div>
             </li>
