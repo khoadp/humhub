@@ -284,6 +284,170 @@ if (!isset($this->context->contentContainer)) {
         }
     </style>
     <!-- end : facebook messenger -->
+    <style>
+        .topbar-second-hide {
+            margin-top: -49px;
+        }
+        .space-layout-container-fix{
+            margin-top: -68px;
+        }
+
+        #custom_space_chooser_btn {
+            height: 30px;
+        }
+
+        #custom_space_chooser_img {
+            padding: 2.5px 0 !important;
+            height: 20px !important;
+        }
+
+        .btn-group-custom-search-btn .popover {
+            width: 350px;
+            background-color: transparent;
+            box-shadow: none;
+            border: none;
+            left: -159.5px !important;
+            max-width: 350px;
+            margin-top: 3px;
+        }
+
+        .btn-group-custom-search-btn .popover .arrow {
+            display: none !important;
+        }
+
+    </style>
+
+    <?php
+    if (isset($this->context->contentContainer)) {
+        $custom_space_chooser_btn = '<div class="btn-group btn-group-custom-space-chooser"><a href="#" id="custom_space_chooser_btn">';
+        $custom_space_chooser_btn .= \humhub\modules\space\widgets\Image::widget([
+            'space' => $this->context->contentContainer,
+            'width' => 25,
+            'htmlOptions' => [
+                'id' => 'custom_space_chooser_img',
+            ]
+        ]);
+        $custom_space_chooser_btn .= ' <b class="caret"></b>';
+        $custom_space_chooser_btn .= '</a></div>';
+        echo "<script>window.custom_space_chooser_btn_html = '" . $custom_space_chooser_btn . "';</script>";
+        $custom_menu_btn = '<div class="btn-group"><a href="#" id="custom_menu_btn"><i class="fa fa-align-justify"></i></a></div>';
+        echo "<script>window.custom_menu_btn_html = '" . $custom_menu_btn . "';</script>";
+        $custom_search_btn = '<div class="btn-group btn-group-custom-search-btn"><a href="#" id="custom_search_btn" data-toggle="popover"><i class="fa fa-search"></a></div>';
+        echo "<script>window.custom_search_btn_html = '" . $custom_search_btn . "';</script>";
+    }
+
+    ?>
+
+    <div class="form-group-custom-search-popover hide">
+        <div class="form-group form-group-search">
+            <form action="/search" method="GET">
+                <div class="form-group form-group-search">
+                    <input type="text" class="form-control form-search popover-search-input" name="keyword"
+                           placeholder="<?= Yii::t('SearchModule.views_search_index', 'Search for user, spaces and content') ?>">
+                    <button type="submit" class="btn btn-default btn-sm form-button-search"><i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        var stateManager = (function () {
+            var state = null;
+            var resizePage = function () {
+                if ($('body').width() < 760) {
+                    if (state !== "mobile") {
+                        displayMobile();
+                    }
+                    resizeMobile();
+                }
+                else {
+                    if (state !== "desktop") {
+                        displayDesktop();
+                    }
+                    resizeDesktop();
+                }
+            };
+            var displayMobile = function () {
+                if (typeof  window.custom_space_chooser_btn_html != 'undefined') {
+                    $('#topbar-second').addClass('topbar-second-hide');
+                    $('.space-layout-container').addClass('space-layout-container-fix');
+                    $('#topbar-first').find('.notifications').append(window.custom_space_chooser_btn_html);
+                    $('#topbar-first').find('.notifications').append(window.custom_menu_btn_html);
+                    $('#topbar-first').find('.notifications').append(window.custom_search_btn_html);
+                    $('#custom_space_chooser_btn').click(function (e) {
+                        e.stopPropagation();
+                        $('#space-menu').click();
+                    });
+
+                    $('#custom_menu_btn').click(function (e) {
+                        e.stopPropagation();
+                        $('#top-dropdown-menu').click();
+                    });
+
+                    $('#custom_search_btn').popover({
+                        html: true,
+                        placement: 'bottom',
+                        content: function () {
+                            return $('.form-group-custom-search-popover').html();
+                        }
+                    }).on('show.bs.popover', function() {
+                        setTimeout(function(){
+                            $('.popover-content').find('input.popover-search-input').focus();
+                        },500)
+
+                    });
+
+                    $('.btn-language-select').find('strong').each(function () {
+                        $(this).addClass('hide');
+                    });
+
+                    $(document).ready(function(){
+                        $('body').on('click', function (e) {
+                            $('[data-toggle="popover"]').each(function () {
+                                //the 'is' for buttons that trigger popups
+                                //the 'has' for icons within a button that triggers a popup
+                                if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                                    $(this).popover('hide');
+                                }
+                            });
+                        });
+                    });
+                }
+
+                state = "mobile";
+
+            };
+
+            var displayDesktop = function () {
+                if (typeof  window.custom_space_chooser_btn_html != 'undefined') {
+                    $('#topbar-second').removeClass('topbar-second-hide');
+                    $('.space-layout-container').removeClass('space-layout-container-fix');
+                    $('.btn-group-custom-space-chooser').remove();
+                    $('#custom_menu_btn').remove();
+                    $('.btn-group-custom-search-btn').remove();
+                    $('.btn-language-select').find('strong').each(function () {
+                        $(this).removeClass('hide');
+                    });
+                }
+
+                state = "desktop";
+
+            };
+            var resizeMobile = function () {
+
+            };
+            var resizeDesktop = function () {
+
+            };
+            return {
+                init: function () {
+                    resizePage();
+                    $(window).on('resize', resizePage);
+                }
+            };
+        }());
+        stateManager.init();
+    </script>
     </body>
     </html>
 <?php $this->endPage() ?>

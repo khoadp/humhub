@@ -13,7 +13,7 @@ $this->registerJsFile("@web/themes/Kodeplus/js/spacechooser.js");
 $this->registerJsVar('scSpaceListUrl', Url::to(['/space/list', 'ajax' => 1]));
 ?>
 
-<li class="dropdown">
+<li class="dropdown space-menu-li-dropdown">
     <a href="#" id="space-menu" class="dropdown-toggle" data-toggle="dropdown">
         <!-- start: Show space image and name if chosen -->
         <?php if ($currentSpace) { ?>
