@@ -1,3 +1,4 @@
+@import "theme.less";
 // Color variables (appears count calculates by raw css)
 
 
@@ -44,4 +45,55 @@ div.tabs-space {
 .tabs-style-underline ul > li.active > a::after,
 .tab_pulldown_contents > ul > li.active > a::after {
   background-color: @primary;
+}
+
+.membership-btn {
+
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 3px;
+  background-color: @primary!important;
+  a,a:hover{
+    background-color: @primary!important;
+    color: white!important;
+    height: 0px!important;
+  }
+}
+
+.btn-applicant
+{
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 3px;
+  background-color: @danger!important;
+  a,a:hover{
+    background-color: @danger!important;
+    color: white!important;
+    height: 0px!important;
+  }
+}
+.btn-revoke-membership
+{
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 3px;
+  background-color: @danger!important;
+  margin-right:5px;display:inline-block;font-size: 12px; float: right;
+  a,a:hover{
+    background-color: @danger!important;
+    color: white!important;
+    height: 0px!important;
+  }
+}
+.btn-invite
+{
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 3px;
+  background-color: @success!important;
+  a,a:hover{
+    background-color: @success!important;
+    color: white!important;
+    height: 0px!important;
+  }
 }

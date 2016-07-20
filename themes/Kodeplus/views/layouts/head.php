@@ -1,4 +1,4 @@
-<link rel="stylesheet/less" type="text/css" href="<?php echo $this->theme->getBaseUrl() . '/css/theme.less'; ?>">
+
 <link rel="stylesheet/less" type="text/css" href="<?php echo $this->theme->getBaseUrl() . '/css/kodeplusTheme.less'; ?>">
 <script src="<?php echo $this->theme->getBaseUrl() . '/js/less.min.js'; ?>"></script>
 <link href="<?php echo $this->theme->getBaseUrl() . '/css/kodeplusTheme.css'; ?>" rel="stylesheet">
