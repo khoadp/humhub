@@ -20,6 +20,9 @@ $config = [
                     'clientId' => getenv('GOOGLE_CLIENT_ID'),
                     'clientSecret' => getenv('GOOGLE_CLIENT_SECRET'),
                 ],
+                'baseAuth' => [
+                    'class' => 'humhub\modules\user\authclient\Password'
+                ],
             ],
         ],
         'bitly' => [

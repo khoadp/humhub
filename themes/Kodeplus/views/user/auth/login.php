@@ -63,7 +63,7 @@ $this->pageTitle = Yii::t('UserModule.views_auth_login', 'Login');
 
                 <?php $form = ActiveForm::begin(['id' => 'account-register-form']); ?>
 
-                <?php echo $form->field($registerModel, 'email')->textInput(['id' => 'register-email', 'placeholder' => $registerModel->getAttributeLabel('email')])->label(false); ?>
+                <?php echo $form->field($invite, 'email')->textInput(['id' => 'register-email', 'placeholder' => $invite->getAttributeLabel('email')])->label(false); ?>
                 <hr>
                 <?php echo CHtml::submitButton(Yii::t('UserModule.views_auth_login', 'Register'), array('class' => 'btn btn-primary')); ?>
 
@@ -91,7 +91,7 @@ $this->pageTitle = Yii::t('UserModule.views_auth_login', 'Login');
 <?php } ?>
 
     // Shake panel after wrong validation
-<?php if ($registerModel->hasErrors()) { ?>
+<?php if ($invite->hasErrors()) { ?>
         $('#register-form').removeClass('bounceInLeft');
         $('#register-form').addClass('shake');
         $('#login-form').removeClass('bounceIn');

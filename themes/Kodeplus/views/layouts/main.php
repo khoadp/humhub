@@ -136,7 +136,7 @@ if (!isset($this->context->contentContainer)) {
         $infoColor = Setting::Get('primaryColor');
     }
     echo '<script>window.primaryColor = "' . $primaryColor . '";</script>';
-    if (isset($this->context->contentContainer)) {
+    if (isset($this->context->contentContainer) && ($this->context->contentContainer instanceof \humhub\modules\space\models\Space)) {
         $infoColor = $this->context->contentContainer->color;
     }
     echo '<script>window.infoColor = "' . $infoColor . '";</script>';
@@ -319,17 +319,23 @@ if (!isset($this->context->contentContainer)) {
 
     <?php
     if (isset($this->context->contentContainer)) {
-        $custom_space_chooser_btn = '<div class="btn-group btn-group-custom-space-chooser"><a href="#" id="custom_space_chooser_btn">';
-        $custom_space_chooser_btn .= \humhub\modules\space\widgets\Image::widget([
-            'space' => $this->context->contentContainer,
-            'width' => 25,
-            'htmlOptions' => [
-                'id' => 'custom_space_chooser_img',
-            ]
-        ]);
-        $custom_space_chooser_btn .= ' <b class="caret"></b>';
-        $custom_space_chooser_btn .= '</a></div>';
+        $custom_space_chooser_btn = '<div class="btn-group btn-group-custom-space-chooser"><a href="#" id="custom_space_chooser_btn"><i class="fa fa-dot-circle-o"></i></a></div>';
+        if($this->context->contentContainer instanceof  \humhub\modules\space\models\Space)
+        {
+            $custom_space_chooser_btn = '<div class="btn-group btn-group-custom-space-chooser"><a href="#" id="custom_space_chooser_btn">';
+            $space = $this->context->contentContainer;
+            $custom_space_chooser_btn .= \humhub\modules\space\widgets\Image::widget([
+                'space' => $space,
+                'width' => 25,
+                'htmlOptions' => [
+                    'id' => 'custom_space_chooser_img',
+                ]
+            ]);
+            $custom_space_chooser_btn .= ' <b class="caret"></b>';
+            $custom_space_chooser_btn .= '</a></div>';
+        }
         echo "<script>window.custom_space_chooser_btn_html = '" . $custom_space_chooser_btn . "';</script>";
+
         $custom_menu_btn = '<div class="btn-group"><a href="#" id="custom_menu_btn"><i class="fa fa-align-justify"></i></a></div>';
         echo "<script>window.custom_menu_btn_html = '" . $custom_menu_btn . "';</script>";
         $custom_search_btn = '<div class="btn-group btn-group-custom-search-btn"><a href="#" id="custom_search_btn" data-toggle="popover"><i class="fa fa-search"></a></div>';
@@ -370,7 +376,7 @@ if (!isset($this->context->contentContainer)) {
             var displayMobile = function () {
                 if (typeof  window.custom_space_chooser_btn_html != 'undefined') {
                     $('#topbar-second').addClass('topbar-second-hide');
-                    $('.space-layout-container').addClass('space-layout-container-fix');
+                    $('body').children('.container').addClass('space-layout-container-fix');
                     $('#topbar-first').find('.notifications').append(window.custom_space_chooser_btn_html);
                     $('#topbar-first').find('.notifications').append(window.custom_menu_btn_html);
                     $('#topbar-first').find('.notifications').append(window.custom_search_btn_html);
