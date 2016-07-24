@@ -27,3 +27,8 @@ nbproject
 themes/*
 !themes/HumHub
 !themes/Kodeplus
+
+favicon.ico
+/.settings
+/.buildpath
+/.project
