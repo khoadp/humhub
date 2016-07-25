@@ -493,7 +493,7 @@ class Space extends ContentContainerActiveRecord implements \humhub\modules\sear
             self::USERGROUP_MODERATOR => Yii::t('SpaceModule.models_Space', 'Moderators'),
             self::USERGROUP_MEMBER => Yii::t('SpaceModule.models_Space', 'Members'),
             self::USERGROUP_USER => Yii::t('SpaceModule.models_Space', 'Users'),
-            self::USERGROUP_INVITED_MODERATOR => Yii::t('Invited Moderator')
+            self::USERGROUP_INVITED_MODERATOR => Yii::t('SpaceModule.models_Space', 'Invited Moderator')
         ];
 
         // Add guest groups if enabled
