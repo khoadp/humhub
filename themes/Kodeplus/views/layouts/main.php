@@ -252,7 +252,8 @@ if (!isset($this->context->contentContainer)) {
             FB.init({
                 appId: "<?= getenv('FACEBOOK_CLIENT_ID') ?>",
                 xfbml: true,
-                version: "v2.6"
+                version: "v2.6",
+                cookie     : true,
             });
 
         };
