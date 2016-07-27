@@ -23,7 +23,7 @@ div.tabs-style-iconbox nav ul li a {
 }
 div.tabs-style-iconbox nav ul li a:hover {
     background-color: #ededed;
-    color: #555;
+    color: #555!important;
 }
 .tabs .fa {
     z-index: 10;
@@ -56,38 +56,47 @@ div.tabs-style-iconbox nav ul li::after {
     top: 0;
     right: -1px;
 }
-.tabs-style-iconbox nav ul li.tab-current a {
+.tabs-style-iconbox nav ul > li.tab-current > a {
     background: #2CC185;
-    color: #fff;
+    color: #fff!important;
 }
+
+.tabs-style-iconbox nav ul  li a {
+    color: #000!important;
+}
+
 div.tabs-style-iconbox nav ul li a span {
     font-size: 11px;
 }
-#more_tab_profile {
+.more_tab_profile {
     position: relative;
     z-index: 200;
 }
-#more_tab_profile > .dropdown-menu {
+.more_tab_profile > .dropdown-menu {
     min-width: 100px;
     padding-top: 0;
     padding-bottom: 0;
     width: 127px;
     border-radius: 1px;
 }
-#more_tab_profile > ul.dropdown-menu > li:last-child {
+.more_tab_profile > .dropdown-menu > li > ul {
+    margin-left: 122px;
+    margin-top : -45px
+}
+.more_tab_profile > ul.dropdown-menu > li:last-child {
     margin-bottom: 0;
 }
 .tabs-style-iconbox nav ul.dropdown-menu li:first-child::before {
     width: 0;
 }
 
-div.tabs-space nav #more_tab_profile li:hover::after,
-div.tabs-space nav #more_tab_profile li:active::after,
-div.tabs-space nav #more_tab_profile li:focus::after {
+div.tabs-space nav .more_tab_profile li:hover::after,
+div.tabs-space nav .more_tab_profile li:active::after,
+div.tabs-space nav .more_tab_profile li:focus::after {
     border-bottom: none;
     height: 0;
 }
-#more_tab_profile ul.dropdown-menu .fa {
+.more_tab_profile ul.dropdown-menu .fa {
     padding-top: 5px;
     margin: 0 auto;
 }
@@ -100,7 +109,7 @@ div.tabs nav a span {
     font-weight: normal;
     text-transform: uppercase;
 }
-.panel #more_tab_profile .dropdown-menu li a {
+.panel .more_tab_profile .dropdown-menu li a {
     padding: 0;
     box-shadow: none;
 }
@@ -130,10 +139,12 @@ div.required label:after {
 
 @media only screen and (max-width: 1200px) {
     div.tabs nav ul li {
-        min-width: 135px;
+        min-width: 127px;
     }
 }
-
+ul.more_tab_profile_child:empty{
+    display: none!important;
+}
 @media only screen and (max-width: 1192px) {
     div.tabs-style-iconbox.tabs-space nav ul li a {
         font-size: 14px;
@@ -144,10 +155,10 @@ div.required label:after {
     div.tabs-style-iconbox nav ul.dropdown-menu li > a:hover {
         border-bottom: none;
     }
-    #more_tab_profile > ul.dropdown-menu {
+    .more_tab_profile > ul.dropdown-menu {
         width: auto;
     }
-    div.tabs-style-iconbox nav ul li.tab-current a {
+    div.tabs-style-iconbox nav ul > li.tab-current > a {
         box-shadow: none;
     }
 }
