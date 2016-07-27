@@ -388,6 +388,7 @@ if (!isset($this->context->contentContainer)) {
                     $('#topbar-first').find('.notifications').append(window.custom_space_chooser_btn_html);
                     $('#topbar-first').find('.notifications').append(window.custom_menu_btn_html);
                     $('#topbar-first').find('.notifications').append(window.custom_search_btn_html);
+                    $('#search-input-field').hide();
                     $('#custom_space_chooser_btn').click(function (e) {
                         e.stopPropagation();
                         $('#space-menu').click();
@@ -437,6 +438,7 @@ if (!isset($this->context->contentContainer)) {
                     $('#topbar-second').removeClass('topbar-second-hide');
                     $('#topbar-first').find('li.account').removeClass('zero-margin-left');
                     $('.space-layout-container').removeClass('space-layout-container-fix');
+                    $('#search-input-field').show();
                     $('.btn-group-custom-space-chooser').remove();
                     $('#custom_menu_btn').remove();
                     $('.btn-group-custom-search-btn').remove();
