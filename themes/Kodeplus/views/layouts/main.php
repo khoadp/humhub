@@ -316,6 +316,12 @@ if (!isset($this->context->contentContainer)) {
             display: none !important;
         }
 
+        .zero-margin-left
+        {
+            margin-left: -15px!important;
+        }
+
+
     </style>
 
     <?php
@@ -377,6 +383,7 @@ if (!isset($this->context->contentContainer)) {
             var displayMobile = function () {
                 if (typeof  window.custom_space_chooser_btn_html != 'undefined') {
                     $('#topbar-second').addClass('topbar-second-hide');
+                    $('#topbar-first').find('li.account').addClass('zero-margin-left');
                     $('body').children('.container').addClass('space-layout-container-fix');
                     $('#topbar-first').find('.notifications').append(window.custom_space_chooser_btn_html);
                     $('#topbar-first').find('.notifications').append(window.custom_menu_btn_html);
@@ -428,6 +435,7 @@ if (!isset($this->context->contentContainer)) {
             var displayDesktop = function () {
                 if (typeof  window.custom_space_chooser_btn_html != 'undefined') {
                     $('#topbar-second').removeClass('topbar-second-hide');
+                    $('#topbar-first').find('li.account').removeClass('zero-margin-left');
                     $('.space-layout-container').removeClass('space-layout-container-fix');
                     $('.btn-group-custom-space-chooser').remove();
                     $('#custom_menu_btn').remove();
