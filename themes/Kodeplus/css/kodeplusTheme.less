@@ -1,13 +1,19 @@
 @import "theme.less";
 // Color variables (appears count calculates by raw css)
 
-
 // Width variables (appears count calculates by raw css)
 @width0: 100%; // Appears 3 times
 
 // Height variables (appears count calculates by raw css)
 @height0: 45px; // Appears 3 times
 
+#search-menu-dropdown {
+  @media screen and (max-height: 720px) {
+    .media-list {
+      max-height: 200px;
+    }
+  }
+}
 div.tabs-space {
   nav {
     ul {
@@ -36,11 +42,9 @@ div.tabs-space {
   }
 }
 
-#create-space-btn:hover{
-  background: @primary!important;
+#create-space-btn:hover {
+  background: @primary !important;
 }
-
-
 
 .tabs-style-underline ul > li.active > a::after,
 .tab_pulldown_contents > ul > li.active > a::after {
@@ -52,48 +56,263 @@ div.tabs-space {
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 3px;
-  background-color: @primary!important;
-  a,a:hover{
-    background-color: @primary!important;
-    color: white!important;
-    height: 0px!important;
+  background-color: @primary !important;
+  a, a:hover {
+    background-color: @primary !important;
+    color: white !important;
+    height: 0px !important;
   }
 }
 
-.btn-applicant
-{
+.btn-applicant {
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 3px;
-  background-color: @danger!important;
-  a,a:hover{
-    background-color: @danger!important;
-    color: white!important;
-    height: 0px!important;
+  background-color: @danger !important;
+  a, a:hover {
+    background-color: @danger !important;
+    color: white !important;
+    height: 0px !important;
   }
 }
-.btn-revoke-membership
-{
+
+.btn-revoke-membership {
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 3px;
-  background-color: @danger!important;
-  margin-right:5px;display:inline-block;font-size: 12px; float: right;
-  a,a:hover{
-    background-color: @danger!important;
-    color: white!important;
-    height: 0px!important;
+  background-color: @danger !important;
+  margin-right: 5px;
+  display: inline-block;
+  font-size: 12px;
+  float: right;
+  a, a:hover {
+    background-color: @danger !important;
+    color: white !important;
+    height: 0px !important;
   }
 }
-.btn-invite
-{
+
+.btn-invite {
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 3px;
-  background-color: @success!important;
-  a,a:hover{
-    background-color: @success!important;
-    color: white!important;
-    height: 0px!important;
+  background-color: @success !important;
+  a, a:hover {
+    background-color: @success !important;
+    color: white !important;
+    height: 0px !important;
+  }
+}
+
+.panel .top-bar {
+  background-color: @info;
+  span {
+    color: white !important;
+  }
+
+}
+
+.chat-btn-group-space {
+  margin-top: -20px;
+  margin-left: -26px;
+}
+
+.chat-btn-group-space-text {
+
+  width: 25px;
+  font-size: 16px;
+  border-radius: 2px;
+  padding: 0.5px 0 !important;
+  height: 25px !important;
+}
+
+.top-bar {
+
+  .heading_place{
+    padding-bottom:20px;
+    .notifications {
+      height: 30px;
+      position: inherit!important;
+      .btn-group > a {
+        padding: 7px 10px!important;
+      }
+    }
+    .panel-title{
+      margin-left: -15px;
+    }
+  }
+}
+
+.top-bar{
+  background-color: @primary;
+  top: 0;
+  z-index: 1030;
+  color: white;
+  .nav > li > a:hover,
+  .nav > .open > a {
+    background-color: lighten(@info, 10%);
+  }
+  .nav > .account {
+    height: 50px;
+    margin-left: 20px;
+    img {
+      margin-left: 10px;
+    }
+    .dropdown-toggle {
+      padding: 10px 5px 8px;
+      line-height: 1.1em;
+      text-align: left;
+      span {
+        font-size: 12px;
+      }
+    }
+  }
+  .topbar-brand {
+    position: relative;
+    z-index: 2;
+  }
+  .topbar-actions {
+    position: relative;
+    z-index: 3;
+  }
+  .notifications {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 1;
+    .btn-group {
+      position: relative;
+      text-align: left;
+    }
+    .btn-group > a {
+      padding: 5px 10px;
+      margin: 10px 2px;
+      display: inline-block;
+      border-radius: 2px;
+      text-decoration: none;
+      text-align: left;
+    }
+    .btn-group > .label {
+      position: absolute;
+      top: 4px;
+      right: -2px;
+    }
+    .arrow:after {
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+      border-width: 10px;
+      content: " ";
+      top: 1px;
+      margin-left: -10px;
+      border-top-width: 0;
+      border-bottom-color: #fff;
+      z-index: 1035;
+    }
+    .arrow {
+      position: absolute;
+      display: block;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+      z-index: 1001;
+      border-width: 11px;
+      left: 50%;
+      margin-left: -18px;
+      border-top-width: 0;
+      border-bottom-color: rgba(0, 0, 0, 0.15);
+      top: -19px;
+      z-index: 1035;
+    }
+    .dropdown-menu {
+      width: 350px;
+      margin-left: -148px;
+      ul.media-list {
+        max-height: 400px;
+        overflow: auto;
+      }
+      li {
+        position: relative;
+        i.approval {
+          position: absolute;
+          left: 2px;
+          top: 36px;
+          font-size: 14px;
+        }
+        i.accepted {
+          color: #5cb85c;
+        }
+        i.declined {
+          color: #d9534f;
+        }
+      }
+      li .media {
+        position: relative;
+      }
+      li .media .img-space {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+      }
+    }
+  }
+  .dropdown-footer {
+    margin: 10px 10px 5px;
+  }
+  a {
+    color: white;
+  }
+  .caret {
+    border-top-color: @font4;
+  }
+  .btn-group > a {
+    background-color: lighten(@info, 5%);
+  }
+  .btn-enter {
+    background-color: lighten(@primary, 5%);
+    margin: 6px 0;
+  }
+  .btn-enter:hover {
+    background-color: lighten(@primary, 8%);
+  }
+  .media-list {
+    a {
+      color: @font3;
+      padding: 0;
+    }
+    li {
+      color: @font3;
+      i.accepted {
+        color: @info !important;
+      }
+      i.declined {
+        color: @danger !important;
+      }
+    }
+    li.placeholder {
+      border-bottom: none;
+    }
+    .media .media-body {
+      .label {
+        padding: 0.1em 0.5em;
+      }
+    }
+  }
+  .account .user-title {
+    text-align: right;
+    span {
+      color: @background3;
+    }
+  }
+  .dropdown.account > a,
+  .dropdown.account.open > a,
+  .dropdown.account > a:hover,
+  .dropdown.account.open > a:hover {
+    background-color: @primary;
   }
 }

@@ -22,7 +22,8 @@ $config = [
                 ],
                 'baseAuth' => [
                     'class' => 'humhub\modules\user\authclient\Password'
-                ],
+                ]
+
             ],
         ],
         'bitly' => [
@@ -34,6 +35,12 @@ $config = [
         'urlManager' => [
             'showScriptName' => false,
             'enablePrettyUrl' => true,
+        ],
+        'redis' => [
+            'class' => 'yii\redis\Connection',
+            'hostname' => 'localhost',
+            'port' => 6379,
+            'database' => 0
         ],
 
     ],

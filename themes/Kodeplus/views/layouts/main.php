@@ -175,7 +175,15 @@ if (!isset($this->context->contentContainer)) {
                     ]
                 ]);
                 ?>
-
+                <?php
+                if (getenv('CHAT_SYSTEM_ENABLE') == 'true') {
+                    echo \humhub\widgets\NotificationArea::widget([
+                        'widgets' => [
+                            [\kodeplus\modules\kodeplus_chat\widgets\Overview::className(), [], ['sortOrder' => 10]],
+                        ]
+                    ]);
+                }
+                ?>
             </div>
 
         </div>
@@ -253,7 +261,7 @@ if (!isset($this->context->contentContainer)) {
                 appId: "<?= getenv('FACEBOOK_CLIENT_ID') ?>",
                 xfbml: true,
                 version: "v2.6",
-                cookie     : true,
+                cookie: true,
             });
 
         };
@@ -289,7 +297,8 @@ if (!isset($this->context->contentContainer)) {
         .topbar-second-hide {
             margin-top: -49px;
         }
-        .space-layout-container-fix{
+
+        .space-layout-container-fix {
             margin-top: -68px;
         }
 
@@ -316,9 +325,8 @@ if (!isset($this->context->contentContainer)) {
             display: none !important;
         }
 
-        .zero-margin-left
-        {
-            margin-left: -15px!important;
+        .zero-margin-left {
+            margin-left: -15px !important;
         }
 
 
@@ -327,8 +335,7 @@ if (!isset($this->context->contentContainer)) {
     <?php
     if (isset($this->context->contentContainer)) {
         $custom_space_chooser_btn = '<div class="btn-group btn-group-custom-space-chooser"><a href="#" id="custom_space_chooser_btn"><i class="fa fa-dot-circle-o"></i></a></div>';
-        if($this->context->contentContainer instanceof  \humhub\modules\space\models\Space)
-        {
+        if ($this->context->contentContainer instanceof \humhub\modules\space\models\Space) {
             $custom_space_chooser_btn = '<div class="btn-group btn-group-custom-space-chooser"><a href="#" id="custom_space_chooser_btn">';
             $space = $this->context->contentContainer;
             $custom_space_chooser_btn .= \humhub\modules\space\widgets\Image::widget([
@@ -362,6 +369,9 @@ if (!isset($this->context->contentContainer)) {
                 </div>
             </form>
         </div>
+    </div>
+    <div class="chat-popup-window" id="chat-popup-window">
+
     </div>
     <script>
         var stateManager = (function () {
@@ -405,10 +415,10 @@ if (!isset($this->context->contentContainer)) {
                         content: function () {
                             return $('.form-group-custom-search-popover').html();
                         }
-                    }).on('show.bs.popover', function() {
-                        setTimeout(function(){
+                    }).on('show.bs.popover', function () {
+                        setTimeout(function () {
                             $('.popover-content').find('input.popover-search-input').focus();
-                        },500)
+                        }, 500)
 
                     });
 
@@ -416,7 +426,7 @@ if (!isset($this->context->contentContainer)) {
                         $(this).addClass('hide');
                     });
 
-                    $(document).ready(function(){
+                    $(document).ready(function () {
                         $('body').on('click', function (e) {
                             $('[data-toggle="popover"]').each(function () {
                                 //the 'is' for buttons that trigger popups
@@ -465,6 +475,22 @@ if (!isset($this->context->contentContainer)) {
         }());
         stateManager.init();
     </script>
+    <script>
+        window.user_id = "<?= Yii::$app->user->id ?>";
+        window.goChatServerIP = <?= getenv('CHAT_SERVER_IP') ?>;
+        window.goChatServerPort = <?= getenv('CHAT_SERVER_PORT') ?>;
+    </script>
+    <?php
+    if (isset($this->context->contentContainer) && ($this->context->contentContainer instanceof \humhub\modules\space\models\Space)) {
+        echo "<script>window.getSingleConversationUrl = '" . $this->context->contentContainer->createUrl('/kodeplus_chat/space-conversation/get-single-conversation') . "';</script>";
+    }
+    ?>
+    <?php
+    if (getenv('CHAT_SYSTEM_ENABLE') == 'true') {
+        $this->registerJsFile("@web/themes/Kodeplus/js/socket.io-1.2.0.js");
+        $this->registerJsFile("@web/themes/Kodeplus/js/chat.js");
+    }
+    ?>
     </body>
     </html>
 <?php $this->endPage() ?>
