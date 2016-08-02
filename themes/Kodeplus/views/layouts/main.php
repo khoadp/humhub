@@ -176,7 +176,7 @@ if (!isset($this->context->contentContainer)) {
                 ]);
                 ?>
                 <?php
-                if (getenv('CHAT_SYSTEM_ENABLE') == 'true') {
+                if (getenv('CHAT_SYSTEM') == 'true') {
                     echo \humhub\widgets\NotificationArea::widget([
                         'widgets' => [
                             [\kodeplus\modules\kodeplus_chat\widgets\Overview::className(), [], ['sortOrder' => 10]],
@@ -486,7 +486,7 @@ if (!isset($this->context->contentContainer)) {
     }
     ?>
     <?php
-    if (getenv('CHAT_SYSTEM_ENABLE') == 'true') {
+    if (getenv('CHAT_SYSTEM') == 'true') {
         $this->registerJsFile("@web/themes/Kodeplus/js/socket.io-1.2.0.js");
         $this->registerJsFile("@web/themes/Kodeplus/js/chat.js");
     }
