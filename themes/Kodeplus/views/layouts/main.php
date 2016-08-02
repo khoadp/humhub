@@ -477,8 +477,8 @@ if (!isset($this->context->contentContainer)) {
     </script>
     <script>
         window.user_id = "<?= Yii::$app->user->id ?>";
-        window.goChatServerIP = <?= getenv('CHAT_SERVER_IP') ?>;
-        window.goChatServerPort = <?= getenv('CHAT_SERVER_PORT') ?>;
+        window.goChatServerIP = '<?= getenv('CHAT_SERVER_IP') ?>';
+        window.goChatServerPort = '<?= getenv('CHAT_SERVER_PORT') ?>';
     </script>
     <?php
     if (isset($this->context->contentContainer) && ($this->context->contentContainer instanceof \humhub\modules\space\models\Space)) {
