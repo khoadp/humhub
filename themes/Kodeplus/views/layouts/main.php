@@ -211,7 +211,7 @@ if (!isset($this->context->contentContainer)) {
                         array('class' => 'form-control form-search', 'id' => 'search-input-field')); ?>
 
                     <?php echo Html::submitButton(\humhub\widgets\TopMenuRightStack::widget(),
-                        array('class' => 'btn btn-default btn-sm form-button-search')); ?>
+                        array('class' => 'btn btn-default btn-sm form-button-search', 'id' => 'topbar-btn-search')); ?>
 
                     <?php echo Html::endForm(); ?>
                 </div>
@@ -359,7 +359,7 @@ if (!isset($this->context->contentContainer)) {
     ?>
 
     <div class="form-group-custom-search-popover hide">
-        <div class="form-group form-group-search">
+        <div class="form-group form-group-search" style="width: 290px">
             <form action="/search" method="GET">
                 <div class="form-group form-group-search">
                     <input type="text" class="form-control form-search popover-search-input" name="keyword"
@@ -373,15 +373,27 @@ if (!isset($this->context->contentContainer)) {
     <div class="chat-popup-window" id="chat-popup-window">
 
     </div>
+    <?php
+    echo '<script>window.isChatEnabled = "'.getenv('CHAT_SYSTEM').'";</script>';
+    ?>
     <script>
         var stateManager = (function () {
             var state = null;
             var resizePage = function () {
                 if ($('body').width() < 760) {
-                    if (state !== "mobile") {
+                    if (state !== "mobile" && state !== "mobile_small") {
                         displayMobile();
                     }
                     resizeMobile();
+                    if(window.isChatEnabled == 'true') {
+                        if ($('body').width() < 370) {
+                            if (state !== "mobile_small") {
+                                displayMobileSmall();
+                            }
+                            $('.popover-search-input').width($('body').width() - 110);
+                            $('.popover-search-input').parent().width($('body').width() - 60);
+                        }
+                    }
                 }
                 else {
                     if (state !== "desktop") {
@@ -389,6 +401,15 @@ if (!isset($this->context->contentContainer)) {
                     }
                     resizeDesktop();
                 }
+            };
+            var displayMobileSmall = function () {
+                $('#custom_search_btn').hide();
+                $('#topbar-btn-search').show();
+                $('#topbar-btn-search').click( function(e){
+                    e.preventDefault();
+                    $('#custom_search_btn').click();
+                });
+                state = 'mobile_small';
             };
             var displayMobile = function () {
                 if (typeof  window.custom_space_chooser_btn_html != 'undefined') {
@@ -399,6 +420,7 @@ if (!isset($this->context->contentContainer)) {
                     $('#topbar-first').find('.notifications').append(window.custom_menu_btn_html);
                     $('#topbar-first').find('.notifications').append(window.custom_search_btn_html);
                     $('#search-input-field').hide();
+                    $('#topbar-btn-search').hide();
                     $('#custom_space_chooser_btn').click(function (e) {
                         e.stopPropagation();
                         $('#space-menu').click();
@@ -427,7 +449,7 @@ if (!isset($this->context->contentContainer)) {
                     });
 
                     $(document).ready(function () {
-                        $('body').on('click', function (e) {
+                      /*  $('body').on('click', function (e) {
                             $('[data-toggle="popover"]').each(function () {
                                 //the 'is' for buttons that trigger popups
                                 //the 'has' for icons within a button that triggers a popup
@@ -435,7 +457,7 @@ if (!isset($this->context->contentContainer)) {
                                     $(this).popover('hide');
                                 }
                             });
-                        });
+                        });*/
                     });
                 }
 
@@ -449,6 +471,7 @@ if (!isset($this->context->contentContainer)) {
                     $('#topbar-first').find('li.account').removeClass('zero-margin-left');
                     $('.space-layout-container').removeClass('space-layout-container-fix');
                     $('#search-input-field').show();
+                    $('#topbar-btn-search').show();
                     $('.btn-group-custom-space-chooser').remove();
                     $('#custom_menu_btn').remove();
                     $('.btn-group-custom-search-btn').remove();
