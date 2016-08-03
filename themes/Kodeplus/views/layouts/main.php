@@ -293,44 +293,7 @@ if (!isset($this->context->contentContainer)) {
         }
     </style>
     <!-- end : facebook messenger -->
-    <style>
-        .topbar-second-hide {
-            margin-top: -49px;
-        }
 
-        .space-layout-container-fix {
-            margin-top: -68px;
-        }
-
-        #custom_space_chooser_btn {
-            height: 30px;
-        }
-
-        #custom_space_chooser_img {
-            padding: 2.5px 0 !important;
-            height: 20px !important;
-        }
-
-        .btn-group-custom-search-btn .popover {
-            width: 350px;
-            background-color: transparent;
-            box-shadow: none;
-            border: none;
-            left: -159.5px !important;
-            max-width: 350px;
-            margin-top: 3px;
-        }
-
-        .btn-group-custom-search-btn .popover .arrow {
-            display: none !important;
-        }
-
-        .zero-margin-left {
-            margin-left: -15px !important;
-        }
-
-
-    </style>
 
     <?php
     if (isset($this->context->contentContainer)) {
@@ -374,7 +337,7 @@ if (!isset($this->context->contentContainer)) {
 
     </div>
     <?php
-    echo '<script>window.isChatEnabled = "'.getenv('CHAT_SYSTEM').'";</script>';
+    echo '<script>window.isChatEnabled = "' . getenv('CHAT_SYSTEM') . '";</script>';
     ?>
     <script>
         var stateManager = (function () {
@@ -385,7 +348,7 @@ if (!isset($this->context->contentContainer)) {
                         displayMobile();
                     }
                     resizeMobile();
-                    if(window.isChatEnabled == 'true') {
+                    if (window.isChatEnabled == 'true') {
                         if ($('body').width() < 370) {
                             if (state !== "mobile_small") {
                                 displayMobileSmall();
@@ -405,7 +368,7 @@ if (!isset($this->context->contentContainer)) {
             var displayMobileSmall = function () {
                 $('#custom_search_btn').hide();
                 $('#topbar-btn-search').show();
-                $('#topbar-btn-search').click( function(e){
+                $('#topbar-btn-search').click(function (e) {
                     e.preventDefault();
                     $('#custom_search_btn').click();
                 });
@@ -449,15 +412,15 @@ if (!isset($this->context->contentContainer)) {
                     });
 
                     $(document).ready(function () {
-                      /*  $('body').on('click', function (e) {
-                            $('[data-toggle="popover"]').each(function () {
-                                //the 'is' for buttons that trigger popups
-                                //the 'has' for icons within a button that triggers a popup
-                                if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-                                    $(this).popover('hide');
-                                }
-                            });
-                        });*/
+                        /*  $('body').on('click', function (e) {
+                         $('[data-toggle="popover"]').each(function () {
+                         //the 'is' for buttons that trigger popups
+                         //the 'has' for icons within a button that triggers a popup
+                         if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+                         $(this).popover('hide');
+                         }
+                         });
+                         });*/
                     });
                 }
 
@@ -514,6 +477,20 @@ if (!isset($this->context->contentContainer)) {
         $this->registerJsFile("@web/themes/Kodeplus/js/chat.js");
     }
     ?>
+        <?= $this->registerJsFile("@web/themes/Kodeplus/js/jquery-track-everything.js"); ?>
+    <script>
+        $("body").track();
+    </script>
     </body>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', '<?= getenv('GOOGLE_ANALYTICS_TRACKING_ID') ?>', 'auto');
+        ga('send', 'pageview');
+
+    </script>
     </html>
 <?php $this->endPage() ?>

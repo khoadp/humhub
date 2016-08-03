@@ -334,3 +334,38 @@ ul.more_tab_profile_child:empty{
         padding-top: 0px!important;
     }
 }
+
+.topbar-second-hide {
+    margin-top: -49px;
+}
+
+.space-layout-container-fix {
+    margin-top: -68px;
+}
+
+#custom_space_chooser_btn {
+    height: 30px;
+}
+
+#custom_space_chooser_img {
+    padding: 2.5px 0 !important;
+    height: 20px !important;
+}
+
+.btn-group-custom-search-btn .popover {
+    width: 350px;
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    left: -159.5px !important;
+    max-width: 350px;
+    margin-top: 3px;
+}
+
+.btn-group-custom-search-btn .popover .arrow {
+    display: none !important;
+}
+
+.zero-margin-left {
+    margin-left: -15px !important;
+}
