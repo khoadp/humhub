@@ -7,36 +7,123 @@ $(function () {
     window.isReceiveSelfMessage = true;
     window.conversationList = [];
     window.conversationCount = 0;
-    var socket = io('https://'+window.goChatServerIP+':'+window.goChatServerPort, {
-        transports: ['websocket', 'polling', 'flashsocket'],
-        path: '/'+window.goChatServerPort+'/socket.io'
-    });
-    window.socket = socket;
-    var jqxhr = $.ajax({
-        url: '/kodeplus_chat/conversation/get-conversations',
-        type: 'GET',
-        dataType: 'json'
-    });
+    var socket;
+    if(window.user_id != "") {
+        socket = io('https://' + window.goChatServerIP + ':' + window.goChatServerPort, {
+            transports: ['websocket', 'polling', 'flashsocket'],
+            path: '/'+window.goChatServerPort+'/socket.io'
+        });
+        window.socket = socket;
+        var jqxhr = $.ajax({
+            url: '/kodeplus_chat/conversation/get-conversations',
+            type: 'GET',
+            dataType: 'json'
+        });
 
-    jqxhr.done(function (data) {
-        if (data.success && data.result !== null) {
-            $.each(data.result, function (index, conversation) {
-                socket.emit('join', {room: conversation.id.toString()});
-                if (conversation.notifyNumber > 0) {
-                    addNewChatNotification(conversation);
+        jqxhr.done(function (data) {
+            if (data.success && data.result !== null) {
+                $.each(data.result, function (index, conversation) {
+                    socket.emit('join', {room: getConversationUniqueId(conversation)});
+                    if (conversation.notifyNumber > 0) {
+                        addNewChatNotification(conversation);
+                    }
+                    //setNotifyNumber(conversation.id, conversation.notifyNumber);
+                });
+                if ($('#chat-notification-list').text() == '') {
+                    setChatNotificationEmptyText(true);
                 }
-                //setNotifyNumber(conversation.id, conversation.notifyNumber);
-            });
-            if ($('#chat-notification-list').text() == '') {
-                setChatNotificationEmptyText(true);
+                else {
+                    setChatNotificationEmptyText(false);
+                }
+                $('#chat_loader_notifications').addClass('hide');
+            }
+        });
+
+        function getConversationUniqueId(conversation){
+            return conversation.id.toString()+'_'+conversation.unique_key;
+        }
+
+        function getUserUniqueId()
+        {
+            return window.user_id+'_'+window.user_id_unique_key;
+        }
+
+        /***
+         Socket.io Events
+         ***/
+
+        socket.on('welcome', function (data) {
+            console.log(data.Message);
+
+            socket.emit('join', {room: 'user_' + getUserUniqueId()});
+        });
+
+        socket.on('joined', function (data) {
+            console.log(data.Message);
+        });
+
+        socket.on('chat.messages', function (data) {
+            if (data.Room == 'user_' + getUserUniqueId()) {
+                data.Message.Body = JSON.parse(data.Message.Body);
+                if (data.Message.Body.action == 0) {
+                    socket.emit('join', {room: data.Message.Body.data});
+                }
+                else if (data.Message.Body.action == 1) {
+                    socket.emit('leave', {room: data.Message.Body.data});
+                }
+
+                return;
+            }
+            var message = data.Message.Body,
+                from_user_id = data.Message.User_id,
+                conversationId = data.Room.split('_')[0],
+                created_at = data.Message.Created_at,
+                isPopup = data.Message.IsPopup;
+
+            if (from_user_id != window.user_id) {
+                setNotifyNumber(conversationId, -1);
+                window.isReceiveSelfMessage = false;
             }
             else {
-                setChatNotificationEmptyText(false);
+                window.isReceiveSelfMessage = true;
             }
-            $('#chat_loader_notifications').addClass('hide');
-        }
-    });
 
+            if (!$('#conversation_' + conversationId).length) {
+                if (isPopup == false) {
+                    return;
+                }
+                getConversationById(conversationId);
+                window.isReceiveMessage = true;
+            }
+            else {
+                updateMessageList(data);
+                conversation = window.conversationList[conversationId].conversation;
+                removeViewedMessage(conversation);
+                if(window.isReceiveSelfMessage == false)
+                {
+                    addNewChatNotification(conversation);
+                    isReceiveSelfMessage = true;
+                }
+
+            }
+
+        });
+
+        socket.on('chat.notifies', function (data) {
+            var conversationId = data.Room.split('_')[0],
+                from_user_id = data.User_id,
+                action = data.Action,
+                mdata = data.Data,
+                created_at = data.Created_at;
+            if (action == 'viewed') {
+                if (typeof window.conversationList[conversationId] != 'undefined') {
+                    window.conversationList[conversationId].conversation.last_view_members = JSON.parse(mdata);
+                    setMessageViewed(window.conversationList[conversationId].conversation);
+                }
+
+            }
+        });
+    }
 
     $('.popup-chat-open').on('click', function (e) {
         e.preventDefault();
@@ -51,81 +138,7 @@ $(function () {
         }
     });
 
-    /***
-     Socket.io Events
-     ***/
 
-    socket.on('welcome', function (data) {
-        console.log(data.Message);
-
-        socket.emit('join', {room: 'user_' + window.user_id});
-    });
-
-    socket.on('joined', function (data) {
-        console.log(data.Message);
-    });
-
-    socket.on('chat.messages', function (data) {
-        if (data.Room == 'user_' + window.user_id) {
-            data.Message.Body = JSON.parse(data.Message.Body);
-            if (data.Message.Body.action == 0) {
-                socket.emit('join', {room: data.Message.Body.data});
-            }
-            else if (data.Message.Body.action == 1) {
-                socket.emit('leave', {room: data.Message.Body.data});
-            }
-
-            return;
-        }
-        var message = data.Message.Body,
-            from_user_id = data.Message.User_id,
-            conversationId = data.Room,
-            created_at = data.Message.Created_at,
-            isPopup = data.Message.IsPopup;
-
-        if (from_user_id != window.user_id) {
-            setNotifyNumber(conversationId, -1);
-            window.isReceiveSelfMessage = false;
-        }
-        else {
-            window.isReceiveSelfMessage = true;
-        }
-
-        if (!$('#conversation_' + conversationId).length) {
-            if (isPopup == false) {
-                return;
-            }
-            getConversationById(conversationId);
-            window.isReceiveMessage = true;
-        }
-        else {
-            updateMessageList(data);
-            conversation = window.conversationList[conversationId].conversation;
-            removeViewedMessage(conversation);
-            if(window.isReceiveSelfMessage == false)
-            {
-                addNewChatNotification(conversation);
-                isReceiveSelfMessage = true;
-            }
-
-        }
-
-    });
-
-    socket.on('chat.notifies', function (data) {
-        var conversationId = data.Room,
-            from_user_id = data.User_id,
-            action = data.Action,
-            mdata = data.Data,
-            created_at = data.Created_at;
-        if (action == 'viewed') {
-            if (typeof window.conversationList[conversationId] != 'undefined') {
-                window.conversationList[conversationId].conversation.last_view_members = JSON.parse(mdata);
-                setMessageViewed(window.conversationList[conversationId].conversation);
-            }
-
-        }
-    });
 });
 function imgUserError(image) {
     image.onerror = "";
@@ -412,7 +425,7 @@ function processChatConversation(conversation) {
 function updateMessageList(data) {
     var message = data.Message.Body,
         from_user_id = data.Message.User_id,
-        conversationId = data.Room,
+        conversationId = data.Room.split('_')[0],
         created_at = data.Message.Created_at;
     if (typeof data.Message.Message_type != 'undefined') {
         data.result = [{

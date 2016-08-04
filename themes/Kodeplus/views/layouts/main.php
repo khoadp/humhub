@@ -461,32 +461,48 @@ if (!isset($this->context->contentContainer)) {
         }());
         stateManager.init();
     </script>
-    <script>
-        window.user_id = "<?= Yii::$app->user->id ?>";
-        window.goChatServerIP = '<?= getenv('CHAT_SERVER_IP') ?>';
-        window.goChatServerPort = '<?= getenv('CHAT_SERVER_PORT') ?>';
-    </script>
+
     <?php
     if (isset($this->context->contentContainer) && ($this->context->contentContainer instanceof \humhub\modules\space\models\Space)) {
         echo "<script>window.getSingleConversationUrl = '" . $this->context->contentContainer->createUrl('/kodeplus_chat/space-conversation/get-single-conversation') . "';</script>";
     }
     ?>
     <?php
-    if (getenv('CHAT_SYSTEM') == 'true') {
+    if (getenv('CHAT_SYSTEM') == 'true' && !Yii::$app->user->isGuest) {
+        $user = Yii::$app->user->getIdentity();
+        if(empty($user->chat_unique_key)){
+            $user->chat_unique_key = uniqid();
+            $user->save();
+        }
+        ?>
+        <script>
+            window.user_id = "<?= Yii::$app->user->id ?>";
+            window.user_id_unique_key = "<?= $user->chat_unique_key ?>";
+            window.goChatServerIP = '<?= getenv('CHAT_SERVER_IP') ?>';
+            window.goChatServerPort = '<?= getenv('CHAT_SERVER_PORT') ?>';
+        </script>
+        <?php
         $this->registerJsFile("@web/themes/Kodeplus/js/socket.io-1.2.0.js");
         $this->registerJsFile("@web/themes/Kodeplus/js/chat.js");
     }
     ?>
-        <?= $this->registerJsFile("@web/themes/Kodeplus/js/jquery-track-everything.js"); ?>
+    <?= $this->registerJsFile("@web/themes/Kodeplus/js/jquery-track-everything.js"); ?>
     <script>
         $("body").track();
     </script>
     </body>
     <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
         ga('create', '<?= getenv('GOOGLE_ANALYTICS_TRACKING_ID') ?>', 'auto');
         ga('send', 'pageview');
