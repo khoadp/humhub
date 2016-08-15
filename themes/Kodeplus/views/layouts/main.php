@@ -176,7 +176,7 @@ if (!isset($this->context->contentContainer)) {
                 ]);
                 ?>
                 <?php
-                if (getenv('CHAT_SYSTEM') == 'true') {
+                if (getenv('CHAT_SYSTEM_ENABLE') == 'true') {
                     echo \humhub\widgets\NotificationArea::widget([
                         'widgets' => [
                             [\kodeplus\modules\kodeplus_chat\widgets\Overview::className(), [], ['sortOrder' => 10]],
@@ -337,7 +337,7 @@ if (!isset($this->context->contentContainer)) {
 
     </div>
     <?php
-    echo '<script>window.isChatEnabled = "' . getenv('CHAT_SYSTEM') . '";</script>';
+    echo '<script>window.isChatEnabled = "' . getenv('CHAT_SYSTEM_ENABLE') . '";</script>';
     ?>
     <script>
         var stateManager = (function () {
@@ -468,7 +468,7 @@ if (!isset($this->context->contentContainer)) {
     }
     ?>
     <?php
-    if (getenv('CHAT_SYSTEM') == 'true' && !Yii::$app->user->isGuest) {
+    if (getenv('CHAT_SYSTEM_ENABLE') == 'true' && !Yii::$app->user->isGuest) {
         $user = Yii::$app->user->getIdentity();
         if(empty($user->chat_unique_key)){
             $user->chat_unique_key = uniqid();
