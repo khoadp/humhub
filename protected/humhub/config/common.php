@@ -33,7 +33,7 @@ $config = [
             ],
         ],
         'search' => array(
-            'class' => 'humhub\modules\search\engine\ZendLuceneSearch',
+            'class' => 'kodeplus\modules\kodeplus_elasticsearch\engine\Elasticsearch',
         ),
         'settings' => array(
             'class' => 'humhub\components\SettingsManager',

@@ -42,6 +42,12 @@ $config = [
             'port' => 6379,
             'database' => 0
         ],
+        'elasticsearch' => [
+            'class' => 'yii\elasticsearch\Connection',
+            'nodes' => [
+                ['http_address' => getenv('ELASTICSEARCH_SERVER_ENDPOINT') ? getenv('ELASTICSEARCH_SERVER_ENDPOINT') : '127.0.0.1:9200'],
+            ],
+        ],
 
     ],
     'bootstrap' => [
