@@ -131,9 +131,9 @@ if (!isset($this->context->contentContainer)) {
     <?php
     $primaryColor = '#708fa0';
     $infoColor = '#6fdbe8';
-    if (Setting::Get('primaryColor')) {
-        $primaryColor = Setting::Get('primaryColor');
-        $infoColor = Setting::Get('primaryColor');
+    if (Yii::$app->settings->get('primaryColor')) {
+        $primaryColor = Yii::$app->settings->get('primaryColor');
+        $infoColor = Yii::$app->settings->get('primaryColor');
     }
     echo '<script>window.primaryColor = "' . $primaryColor . '";</script>';
     if (isset($this->context->contentContainer) && ($this->context->contentContainer instanceof \humhub\modules\space\models\Space)) {
