@@ -8,9 +8,15 @@ use yii\helpers\Html;
     <div class="panel-heading"><?php echo Yii::t('SpaceModule.widgets_views_spaceMembers', '<strong>Space</strong> members'); ?></div>
     <div class="panel-body">
         <?php
-        $connection = Yii::$app->getDb();
-        $sql = 'SELECT * from chat_conversation_user where conversation_id IN (SELECT chat_conversation_user.conversation_id FROM chat_conversation_user JOIN chat_conversation on chat_conversation.id = chat_conversation_user.conversation_id and chat_conversation.type = 0 where user_id = '.Yii::$app->user->id.' and chat_conversation.space_id = '.$space->id.') and user_id <> '.Yii::$app->user->id;
-        $conversationUsers = $connection->createCommand($sql)->queryAll();
+        $conversationId = '';
+        $conversationUsers = [];
+        if(!Yii::$app->user->isGuest)
+        {
+            $connection = Yii::$app->getDb();
+            $sql = 'SELECT * from chat_conversation_user where conversation_id IN (SELECT chat_conversation_user.conversation_id FROM chat_conversation_user JOIN chat_conversation on chat_conversation.id = chat_conversation_user.conversation_id and chat_conversation.type = 0 where user_id = '.Yii::$app->user->id.' and chat_conversation.space_id = '.$space->id.') and user_id <> '.Yii::$app->user->id;
+            $conversationUsers = $connection->createCommand($sql)->queryAll();
+        }
+
         ?>
         <?php foreach ($users as $user) { ?>
             <?php
