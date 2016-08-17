@@ -11,12 +11,12 @@ $config = [
             'class' => 'yii\authclient\Collection',
             'clients' => [
                 'facebook' => [
-                    'class' => 'yii\authclient\clients\Facebook',
+                    'class' => 'humhub\modules\user\authclient\Facebook',
                     'clientId' => getenv('FACEBOOK_CLIENT_ID'),
                     'clientSecret' => getenv('FACEBOOK_CLIENT_SECRET'),
                 ],
                 'google' => [
-                    'class' => 'yii\authclient\clients\GoogleOAuth',
+                    'class' => 'humhub\modules\user\authclient\Google',
                     'clientId' => getenv('GOOGLE_CLIENT_ID'),
                     'clientSecret' => getenv('GOOGLE_CLIENT_SECRET'),
                 ],
