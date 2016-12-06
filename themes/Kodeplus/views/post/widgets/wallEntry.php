@@ -30,9 +30,9 @@ use kodeplus\modules\kodeplus_space\widgets\LinkExtract;
 
         /*        if (_words > 1100) {
          // show more-button
-         $('#more-link-post-<?php echo $post->id; ?>').removeClass('hidden');
+            $('#more-link-post- < ?php //echo $post->id; ?>//').removeClass('hidden');
          // set limited height
-         $('#post-content- <?php echo $post->id; ?>').css({'display': 'block', 'max-height': '310px'});
+            $('#post-content- < ?php //echo $post->id; ?>//').css({'display': 'block', 'max-height': '310px'});
          }*/
 
         if (_postHeight > 310) {

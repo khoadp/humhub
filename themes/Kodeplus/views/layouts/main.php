@@ -158,9 +158,9 @@ if (!isset($this->context->contentContainer)) {
             </div>
 
             <div class="topbar-actions pull-right">
-                <?php echo \humhub\modules\user\widgets\AccountTopMenu::widget(); ?>
+                <?php echo \kodeplus\modules\kodeplus_user\widgets\AccountTopMenu::widget(); ?>
             </div>
-            <div class="topbar-actions pull-right" style="margin: 1%">
+            <div class="topbar-actions pull-right" style="line-height:3.6em">
                 <?php
                 echo \kodeplus\modules\kodeplus_user\widgets\Language::widget();
                 ?>
