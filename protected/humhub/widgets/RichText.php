@@ -61,7 +61,7 @@ class RichText extends \humhub\components\Widget
         if ($this->encode) {
             $this->text = Html::encode($this->text);
         }
-
+        
         if (!$this->minimal) {
             $maxOembedCount = 3; // Maximum OEmbeds
             $oembedCount = 0; // OEmbeds used
@@ -103,9 +103,10 @@ REGEXP;
             $this->text = \humhub\libs\Helpers::truncateText($this->text, $this->maxLength);
         }
 
+        $this->text = trim($this->text);
+        
         if (!$this->minimal) {
             $output = nl2br($this->text);
-            
         } else {
             $output = $this->text;
         }
@@ -160,7 +161,7 @@ REGEXP;
      */
     public static function translateMentioning($text, $buildAnchors = true)
     {
-        return preg_replace_callback('@\@\-([us])([\w\-]*?)($|\s|\.|")@', function($hit) use(&$buildAnchors) {
+        return preg_replace_callback('@\@\-([us])([\w\-]*?)($|[\.,:;\'"!\?\s])@', function($hit) use(&$buildAnchors) {
             if ($hit[1] == 'u') {
                 $user = \humhub\modules\user\models\User::findOne(['guid' => $hit[2]]);
                 if ($user !== null) {

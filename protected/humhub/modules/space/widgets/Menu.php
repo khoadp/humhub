@@ -3,7 +3,7 @@
 namespace humhub\modules\space\widgets;
 
 use Yii;
-use \yii\base\Widget;
+
 use humhub\modules\content\components\ContentContainerController;
 use humhub\modules\space\models\Space;
 
@@ -16,7 +16,7 @@ use humhub\modules\space\models\Space;
  */
 class Menu extends \humhub\widgets\BaseMenu
 {
-
+    /** @var Space */
     public $space;
     public $template = "@humhub/widgets/views/leftNavigation";
 
@@ -83,7 +83,29 @@ class Menu extends \humhub\widgets\BaseMenu
                 return $indexUrl;
             } else {
                 //Either the module was deactivated or url changed
-                $indexUrl = $settings->contentContainer($space)->delete('indexUrl');
+                $settings->contentContainer($space)->delete('indexUrl');
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns space default / homepage
+     * 
+     * @return string|null the url to redirect or null for default home
+     */
+    public static function getGuestsDefaultPageUrl($space)
+    {
+        $settings = Yii::$app->getModule('space')->settings;
+
+        $indexUrl = $settings->contentContainer($space)->get('indexGuestUrl');
+        if ($indexUrl !== null) {
+            $pages = static::getAvailablePages();
+            if (isset($pages[$indexUrl])) {
+                return $indexUrl;
+            } else {
+                //Either the module was deactivated or url changed
+                $settings->contentContainer($space)->delete('indexGuestUrl');
             }
         }
         return null;

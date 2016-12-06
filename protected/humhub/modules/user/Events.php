@@ -25,7 +25,7 @@ class Events extends \yii\base\Object
      */
     public static function onSearchRebuild($event)
     {
-        foreach (models\User::find()->all() as $obj) {
+        foreach (models\User::find()->active()->all() as $obj) {
             \Yii::$app->search->add($obj);
         }
     }
@@ -128,8 +128,6 @@ class Events extends \yii\base\Object
      */
     public static function onHourlyCron($event)
     {
-        $controller = $event->sender;
-
         foreach (Yii::$app->authClientCollection->getClients() as $authClient) {
             if ($authClient instanceof authclient\interfaces\AutoSyncUsers) {
                 /**

@@ -8,7 +8,7 @@ Yii::setAlias('@config', '@app/config');
 
 $config = [
     'name' => 'HumHub',
-    'version' => '1.1.0-beta.2',
+    'version' => '1.1.2',
     'basePath' => dirname(__DIR__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR,
     'bootstrap' => ['log', 'humhub\components\bootstrap\ModuleAutoLoader'],
     'sourceLanguage' => 'en',
@@ -27,7 +27,7 @@ $config = [
                 [
                     'class' => 'yii\log\DbTarget',
                     'levels' => ['error', 'warning'],
-                    'except' => ['yii\web\HttpException:404'],
+                    'except' => ['yii\web\HttpException:404', 'yii\web\HttpException:403', 'yii\web\HttpException:401'],
                     'logVars' => ['_GET', '_SERVER'],
                 ],
             ],
@@ -149,6 +149,7 @@ $config = [
             'ko' => '한국어',
             'id' => 'Bahasa Indonesia',
             'lt' => 'lietuvių kalba',
+            'ht' => 'Kreyòl ayisyen',
         ],
         'user' => [
             // Minimum username length

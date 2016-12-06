@@ -9,7 +9,6 @@
 namespace humhub\modules\user\controllers;
 
 use Yii;
-use yii\helpers\Url;
 use yii\web\HttpException;
 use humhub\modules\user\components\BaseAccountController;
 use humhub\modules\user\models\User;
@@ -111,8 +110,9 @@ class AccountController extends BaseAccountController
             $user->time_zone = $model->timeZone;
             $user->visibility = $model->visibility;
             $user->save();
-
+           
             Yii::$app->getSession()->setFlash('data-saved', Yii::t('UserModule.controllers_AccountController', 'Saved'));
+            return $this->redirect(['edit-settings']);
         }
 
         return $this->render('editSettings', array('model' => $model, 'languages' => Yii::$app->i18n->getAllowedLanguages()));

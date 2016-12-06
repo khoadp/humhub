@@ -71,8 +71,8 @@ class AuthClientHelpers
                 $auth->delete();
                 $auth = null;
             }
-            
-            
+
+
             if ($auth === null) {
                 $auth = new \humhub\modules\user\models\Auth([
                     'user_id' => $user->id,
@@ -127,6 +127,10 @@ class AuthClientHelpers
                     } else {
                         $user->profile->setAttribute($attributeName, $attributes[$attributeName]);
                     }
+                } else {
+                    if ($user->profile->hasAttribute($attributeName)) {
+                        $user->profile->setAttribute($attributeName, '');
+                    }
                 }
             }
 
@@ -136,7 +140,7 @@ class AuthClientHelpers
             }
 
             if (count($user->profile->getDirtyAttributes()) !== 0 && !$user->profile->save()) {
-                Yii::error('Could not update user attributes by AuthClient (UserId: ' . $user->id . ") - Error: " . print_r($user->getErrors(), 1));
+                Yii::error('Could not update user attributes by AuthClient (UserId: ' . $user->id . ") - Error: " . print_r($user->profile->getErrors(), 1));
                 return false;
             }
         }

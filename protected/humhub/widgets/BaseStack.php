@@ -20,8 +20,6 @@
 
 namespace humhub\widgets;
 
-use Yii;
-
 /**
  * StackWidget is a widget which can hold a set of subwidgets.
  *
@@ -46,14 +44,14 @@ class BaseStack extends \yii\base\Widget
      *  [1] Params Arrays
      *  [2] Additional Options
      *
-     * @var Array
+     * @var array
      */
     public $widgets = array();
 
     /**
      * Seperator HTML Code (glue)
      *
-     * @var String
+     * @var string
      */
     public $seperator = "";
 
@@ -61,7 +59,7 @@ class BaseStack extends \yii\base\Widget
      * Template for output
      * The placeholder {content} will used to add content.
      *
-     * @var String
+     * @var string
      */
     public $template = "{content}";
 
@@ -104,18 +102,21 @@ class BaseStack extends \yii\base\Widget
     /**
      * Removes a widget from the stack
      *
-     * @todo Code me!
-     * @param type $className
+     * @param string $className
      */
     public function removeWidget($className)
     {
-
+        foreach($this->widgets as $k => $widget) {
+            if ($widget[0] === $className) {
+                unset($this->widgets[$k]);
+            }
+        }
     }
 
     /**
      * Returns all widgets by sortorder
      *
-     * @return Array
+     * @return array
      */
     protected function getWidgets()
     {
@@ -139,22 +140,20 @@ class BaseStack extends \yii\base\Widget
     /**
      * Adds a new widget
      *
-     * @param String $className
-     * @param Array $params widget definition
-     * @param Array $options extra option array with e.g. "sortOrder"
+     * @param string $className
+     * @param array $params widget definition
+     * @param array $options extra option array with e.g. "sortOrder"
      */
     public function addWidget($className, $params = array(), $options = array())
     {
         if (!isset($options['sortOrder']))
             $options['sortOrder'] = 100;
 
-        array_push($this->widgets, array(
+        $this->widgets[] = array(
             $className,
             $params,
             $options
-        ));
+        );
     }
 
 }
-
-?>

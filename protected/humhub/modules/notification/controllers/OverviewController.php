@@ -40,7 +40,7 @@ class OverviewController extends Controller
     public function actionIndex()
     {
         $pageSize = 10;
-        $session = Yii::$app->session;
+        $notifications = [];
 
         $filterForm = new FilterForm();
         $filterForm->initFilter();
@@ -58,7 +58,8 @@ class OverviewController extends Controller
             return $this->render('index', [
                         'notificationEntries' => [],
                         'filterForm' => $filterForm,
-                        'pagination' => null
+                        'pagination' => null,
+                        'notifications' => $notifications
             ]);
         }
 
@@ -72,7 +73,6 @@ class OverviewController extends Controller
 
         $query->offset($pagination->offset)->limit($pagination->limit);
 
-        $notifications = [];
         foreach ($query->all() as $notificationRecord) {
             $notifications[] = $notificationRecord->getClass();
         }

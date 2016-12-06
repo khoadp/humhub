@@ -18,8 +18,7 @@
  */
 return [
     'Here you can connect to external service provider for using external services like a single sign on authentication.' => '',
-    'User with the same email already exists but isn\'t linked to you. Login using your email first to link it.' => '',
-    'Your new password must not equal your current password!' => '',
+    'You\'re not registered.' => '',
     '<strong>Security</strong> settings' => 'Paramètres de <strong>sécurité</strong>',
     'Basic Settings' => 'Paramètres basiques',
     'Change Email' => 'Modifier l\'e-mail',
@@ -45,5 +44,7 @@ return [
     'Security' => 'Sécurité',
     'Settings' => 'Réglages',
     'User' => 'Utilisateur',
+    'User with the same email already exists but isn\'t linked to you. Login using your email first to link it.' => 'Un utilisateur avec le même e-mail existe déjà, mais ne vous est pas rattaché. Se connecter d\'abord en utilisant cet e-mail pour effectuer ce rattachement.',
+    'Your new password must not equal your current password!' => 'Votre nouveau mot de passe doit être différent de votre mot de passe actuel !',
     'or' => 'ou',
 ];

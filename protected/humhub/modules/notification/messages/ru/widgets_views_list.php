@@ -17,8 +17,8 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Show all notifications' => '',
-    'Mark all as seen' => 'Пометить все как прочитанное',
+    'Show all notifications' => 'Показать все уведомления',
+    'Mark all as seen' => 'Пометить всё как прочитанное',
     'Notifications' => 'Уведомления',
     'There are no notifications yet.' => 'Уведомлений пока нет.',
 ];

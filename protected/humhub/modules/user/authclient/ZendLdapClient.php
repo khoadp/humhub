@@ -12,10 +12,10 @@ use Yii;
 use Zend\Ldap\Ldap;
 use Zend\Ldap\Node;
 use Zend\Ldap\Exception\LdapException;
-use humhub\models\Setting;
+
 use humhub\modules\user\models\User;
 use humhub\modules\user\models\ProfileField;
-use humhub\modules\user\authclient\AuthClientHelpers;
+
 
 /**
  * LDAP Authentication
@@ -308,6 +308,8 @@ class ZendLdapClient extends BaseFormAuth implements interfaces\AutoSyncUsers, i
         $userFilter = Yii::$app->getModule('user')->settings->get('auth.ldap.userFilter');
         $baseDn = Yii::$app->getModule('user')->settings->get('auth.ldap.baseDn');
         $userCollection = $this->getLdap()->search($userFilter, $baseDn, Ldap::SEARCH_SCOPE_SUB);
+
+        $authClient = null;
 
         $ids = [];
         foreach ($userCollection as $attributes) {

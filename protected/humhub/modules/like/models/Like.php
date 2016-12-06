@@ -9,7 +9,7 @@
 namespace humhub\modules\like\models;
 
 use Yii;
-use humhub\models\Setting;
+
 use humhub\modules\content\components\ContentAddonActiveRecord;
 
 /**
@@ -83,12 +83,13 @@ class Like extends ContentAddonActiveRecord
         $activity = new \humhub\modules\like\activities\Liked();
         $activity->source = $this;
         $activity->create();
-
-        if ($this->getSource()->createdBy !== null) {
+        
+        // source itsself does not need to have creadedBy attribute
+        if ($this->getSource()->hasAttribute('content') && $this->getSource()->content->createdBy !== null) {
             $notification = new \humhub\modules\like\notifications\NewLike();
             $notification->source = $this;
             $notification->originator = $this->user;
-            $notification->send($this->getSource()->createdBy);
+            $notification->send($this->getSource()->content->createdBy);
         }
 
         return parent::afterSave($insert, $changedAttributes);
