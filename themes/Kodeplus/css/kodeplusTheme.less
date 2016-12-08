@@ -14,6 +14,7 @@
     }
   }
 }
+
 div.tabs-space {
   nav {
     ul {
@@ -128,22 +129,22 @@ div.tabs-space {
 
 .top-bar {
 
-  .heading_place{
-    padding-bottom:20px;
+  .heading_place {
+    padding-bottom: 20px;
     .notifications {
       height: 30px;
-      position: inherit!important;
+      position: inherit !important;
       .btn-group > a {
-        padding: 7px 10px!important;
+        padding: 7px 10px !important;
       }
     }
-    .panel-title{
+    .panel-title {
       margin-left: -15px;
     }
   }
 }
 
-.top-bar{
+.top-bar {
   background-color: @primary;
   top: 0;
   z-index: 1030;
@@ -335,4 +336,17 @@ div.tabs-space {
   position: relative;
   bottom: inherit;
   right: inherit;
+}
+
+.form-group {
+  &, &.required {
+    label {
+      &[required], &.required {
+        &:after {
+          content: ' *';
+          color: red;
+        }
+      }
+    }
+  }
 }
