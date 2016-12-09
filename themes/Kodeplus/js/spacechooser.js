@@ -40,6 +40,10 @@ function getMorePage(keyword) {
         error: function () {
             $(".loadingmore").remove();
             return 'none';
+        },
+        complete: function () {
+            var otherSpaceTab = $("a[data-target='#other'] span")[0];
+            otherSpaceTab.textContent += "(" + $("#other li").length + ")";
         }
     });
 }
@@ -147,10 +151,10 @@ $(document).ready(function () {
 
             if (input > 0) {
                 // remove max-height property to hide the nicescroll scrollbar
-                $('#space-menu-spaces').css({'max-height': 'none'});
+                $('#space-menu-spaces').css({ 'max-height': 'none' });
             } else {
                 // set max-height property to show the nicescroll scrollbar
-                $('#space-menu-spaces').css({'max-height': '400px'});
+                $('#space-menu-spaces').css({ 'max-height': '400px' });
             }
 
             // empty variable and array
@@ -281,7 +285,7 @@ $(document).ready(function () {
         });
 
         // set max-height property to show the nicescroll scrollbar
-        $('#space-menu-spaces').css({'max-height': '400px'});
+        $('#space-menu-spaces').css({ 'max-height': '400px' });
     }
 
 
