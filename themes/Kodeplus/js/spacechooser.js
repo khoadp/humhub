@@ -38,13 +38,13 @@ function getMorePage(keyword) {
             }
 
             $(".loadingmore").remove();
+            otherSpaceTab.textContent = otherSpaceText + "(" + json.total + ")";
             if (json.data == 'none') {
                 scroll_iscontinue = false;
                 return;
             }
 
             $("#other").append(json.data);
-            otherSpaceTab.textContent = otherSpaceText + "(" + json.total + ")";
             scroll_curpage++;
             return json;
         },
