@@ -12,6 +12,8 @@ var is_search = false;
 var scroll_curpage = 1;
 var scroll_iscontinue = true;
 var html = '<li class="loadingmore">Loading...</li>';
+var otherSpaceTab = $("a[data-target='#other'] span")[0];
+const otherSpaceText = otherSpaceTab.textContent;
 
 function getMorePage(keyword) {
     $.ajax({
@@ -26,24 +28,30 @@ function getMorePage(keyword) {
             // setting a timeout
             $("#other").append(html);
         },
-        success: function (data) {
+        success: function (resp) {
+            var json;
+            try {
+                json = JSON.parse(resp);
+            } catch (err) {
+                console.error(err);
+                json = {};
+            }
+
             $(".loadingmore").remove();
-            if (data == 'none') {
+            if (json.data == 'none') {
                 scroll_iscontinue = false;
                 return;
             }
 
-            $("#other").append(data);
+            $("#other").append(json.data);
+            otherSpaceTab.textContent = otherSpaceText + "(" + json.total + ")";
             scroll_curpage++;
-            return data;
+            return json;
         },
         error: function () {
             $(".loadingmore").remove();
+            otherSpaceTab.textContent = otherSpaceText;
             return 'none';
-        },
-        complete: function () {
-            var otherSpaceTab = $("a[data-target='#other'] span")[0];
-            otherSpaceTab.textContent += "(" + $("#other li").length + ")";
         }
     });
 }
@@ -60,6 +68,7 @@ $(document).ajaxComplete(function (event, request, settings) {
         resetPage('');
     }
 });
+
 getMorePage('');
 
 /*$("#space-menu-spaces").niceScroll().scrollend(function (info) {
