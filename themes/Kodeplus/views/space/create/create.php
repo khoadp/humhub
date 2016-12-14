@@ -66,7 +66,7 @@ if(Setting::Get('primaryColor') != null){
                     'type' => 'POST',
                     'beforeSend' => new yii\web\JsExpression('function(){ setModalLoader(); }'),
                     'success' => new yii\web\JsExpression('function(html){ $("#globalModal").html(html); }'),
-                    'url' => Url::to(['/space/create/create']),
+                    'url' => Url::to(['/kodeplus_space/create/create']),
                 ],
                 'htmlOptions' => [
                     'class' => 'btn btn-primary',
@@ -127,7 +127,7 @@ if(Setting::Get('primaryColor') != null){
             color: '<?= $primaryColor  ?>',
             horizontal: false,
             component: '.input-group-addon',
-            input: '#space-color-picker',
+            input: '#space-color-picker'
         });
     });
 
