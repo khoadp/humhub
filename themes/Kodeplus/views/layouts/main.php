@@ -10,13 +10,16 @@ use humhub\models\Setting;
 
 AppAsset::register($this);
 
+// FIXME
 if (Yii::$app->hasModule('classified')) {
     \kodeplus\modules\classified\GalleryAsset::register($this);
     \kodeplus\modules\classified\DosamigosAsset::register($this);
 }
-if (Yii::$app->hasModule('map')) {
-    \kodeplus\modules\map\library\MapAssets::register($this);
-}
+
+// FIXME
+//if (Yii::$app->hasModule('map')) {
+//    \kodeplus\modules\map\library\MapAssets::register($this);
+//}
 
 if (!isset($this->context->contentContainer)) {
     if (isset($_SESSION['views']) && isset($_SESSION['space'])) {
@@ -53,7 +56,13 @@ if (!isset($this->context->contentContainer)) {
         <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
         <!--[if lt IE 9]>
         <script src="<?php echo Yii::getAlias(" @web"); ?>/js/html5shiv.js"></script>
-        <linkid = "ie-style" href="<?php echo Yii::getAlias("@web"); ?>/css/ie.css" rel = "stylesheet" />
+        <
+        linkid = "ie-style"
+        href = "<?php echo Yii::getAlias("
+        @
+        web
+        "); ?>/css/ie.css"
+        rel = "stylesheet" / >
         <![endif]-->
 
         <!--[if IE 9]>
@@ -69,26 +78,26 @@ if (!isset($this->context->contentContainer)) {
         <link rel="apple-touch-icon" sizes="57x57" href="<?php echo Yii::getAlias("@web"); ?>/ico/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="<?php echo Yii::getAlias("@web"); ?>/ico/apple-icon-60x60.png">
         <link rel="apple-touch-icon" sizes="72x72"
-              href="<?php echo Yii::getAlias("@web"); ?>//ico/apple-icon-72x72.png">
+                href="<?php echo Yii::getAlias("@web"); ?>//ico/apple-icon-72x72.png">
         <link rel="apple-touch-icon" sizes="76x76" href="<?php echo Yii::getAlias("@web"); ?>/ico/apple-icon-76x76.png">
         <link rel="apple-touch-icon" sizes="114x114"
-              href="<?php echo Yii::getAlias("@web"); ?>/ico/apple-icon-114x114.png">
+                href="<?php echo Yii::getAlias("@web"); ?>/ico/apple-icon-114x114.png">
         <link rel="apple-touch-icon" sizes="120x120"
-              href="<?php echo Yii::getAlias("@web"); ?>/ico/apple-icon-120x120.png">
+                href="<?php echo Yii::getAlias("@web"); ?>/ico/apple-icon-120x120.png">
         <link rel="apple-touch-icon" sizes="144x144"
-              href="<?php echo Yii::getAlias("@web"); ?>/ico/apple-icon-144x144.png">
+                href="<?php echo Yii::getAlias("@web"); ?>/ico/apple-icon-144x144.png">
         <link rel="apple-touch-icon" sizes="152x152"
-              href="<?php echo Yii::getAlias("@web"); ?>/ico/apple-icon-152x152.png">
+                href="<?php echo Yii::getAlias("@web"); ?>/ico/apple-icon-152x152.png">
         <link rel="apple-touch-icon" sizes="180x180"
-              href="<?php echo Yii::getAlias("@web"); ?>/ico/apple-icon-180x180.png">
+                href="<?php echo Yii::getAlias("@web"); ?>/ico/apple-icon-180x180.png">
         <link rel="icon" type="image/png" sizes="192x192"
-              href="<?php echo Yii::getAlias("@web"); ?>/ico/android-icon-192x192.png">
+                href="<?php echo Yii::getAlias("@web"); ?>/ico/android-icon-192x192.png">
         <link rel="icon" type="image/png" sizes="32x32"
-              href="<?php echo Yii::getAlias("@web"); ?>/ico/favicon-32x32.png">
+                href="<?php echo Yii::getAlias("@web"); ?>/ico/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96"
-              href="<?php echo Yii::getAlias("@web"); ?>/ico/favicon-96x96.png">
+                href="<?php echo Yii::getAlias("@web"); ?>/ico/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16"
-              href="<?php echo Yii::getAlias("@web"); ?>/ico/favicon-16x16.png">
+                href="<?php echo Yii::getAlias("@web"); ?>/ico/favicon-16x16.png">
         <link rel="manifest" href="/manifest.json">
         <meta name="msapplication-TileColor" content="#ffffff">
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
@@ -273,10 +282,10 @@ if (!isset($this->context->contentContainer)) {
     </script>
 
     <div class="fb-messengermessageus"
-         messenger_app_id="<?= getenv('FACEBOOK_CLIENT_ID') ?>"
-         page_id="<?= getenv('FACEBOOK_MESSENGER_PAGE_ID') ?>"
-         color="blue"
-         size="large">
+            messenger_app_id="<?= getenv('FACEBOOK_CLIENT_ID') ?>"
+            page_id="<?= getenv('FACEBOOK_MESSENGER_PAGE_ID') ?>"
+            color="blue"
+            size="large">
     </div>
     <style>
         .fb-messengermessageus {
@@ -319,7 +328,7 @@ if (!isset($this->context->contentContainer)) {
             <form action="/search" method="GET">
                 <div class="form-group form-group-search">
                     <input type="text" class="form-control form-search popover-search-input" name="keyword"
-                           placeholder="<?= Yii::t('SearchModule.views_search_index', 'Search for user, spaces and content') ?>">
+                            placeholder="<?= Yii::t('SearchModule.views_search_index', 'Search for user, spaces and content') ?>">
                     <button type="submit" class="btn btn-default btn-sm form-button-search"><i class="fa fa-search"></i>
                     </button>
                 </div>
@@ -463,7 +472,7 @@ if (!isset($this->context->contentContainer)) {
     <?php
     if (getenv('CHAT_SYSTEM_ENABLE') == 'true' && !Yii::$app->user->isGuest) {
         $user = Yii::$app->user->getIdentity();
-        if(empty($user->chat_unique_key)){
+        if (empty($user->chat_unique_key)) {
             $user->chat_unique_key = uniqid();
             $user->save();
         }
@@ -501,5 +510,18 @@ if (!isset($this->context->contentContainer)) {
         ga('send', 'pageview');
 
     </script>
+    <?php if (Yii::$app->getSession()->hasFlash('enable-module-error')) {
+        $error = Yii::$app->getSession()->getFlash('enable-module-error');
+        ?>
+        <script>
+            $(function () {
+                var modal = $("#globalModal");
+                var contentModal = modal.find(".modal-content");
+                contentModal.html('<div class="modal-header"> <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> <h4 class="modal-title" id="myModalLabel"><strong><?= $error['module'] ?></strong></h4> </div>');
+                contentModal.append('<div class="modal-body"><h5>Some errors occurred when enabling this module:</h5><ul><?php foreach ($error['errors'] as $error) { echo "<li class=\"text-danger\">$error</li>" ;} ?></li></ul></div>');
+                modal.modal('show');
+            })
+        </script>
+    <?php } ?>
     </html>
 <?php $this->endPage() ?>

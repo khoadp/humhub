@@ -20,21 +20,21 @@ div.tabs-space {
     ul {
       li:hover {
         &::after {
-          border-bottom: 3px solid @info;
+          border-bottom: 3px solid @info_;
           height: @height0;
           width: @width0;
         }
       }
       li:active {
         &::after {
-          border-bottom: 3px solid @info;
+          border-bottom: 3px solid @info_;
           height: @height0;
           width: @width0;
         }
       }
       li:focus {
         &::after {
-          border-bottom: 3px solid @info;
+          border-bottom: 3px solid @info_;
           height: @height0;
           width: @width0;
         }
@@ -106,7 +106,7 @@ div.tabs-space {
 }
 
 .panel .top-bar {
-  background-color: @info;
+  background-color: @info_;
   span {
     color: white !important;
   }
@@ -151,7 +151,7 @@ div.tabs-space {
   color: white;
   .nav > li > a:hover,
   .nav > .open > a {
-    background-color: lighten(@info, 10%);
+    background-color: lighten(@info_, 10%);
   }
   .nav > .account {
     height: 50px;
@@ -272,7 +272,7 @@ div.tabs-space {
     border-top-color: @font4;
   }
   .btn-group > a {
-    background-color: lighten(@info, 5%);
+    background-color: lighten(@info_, 5%);
   }
   .btn-enter {
     background-color: lighten(@primary, 5%);
@@ -289,7 +289,7 @@ div.tabs-space {
     li {
       color: @font3;
       i.accepted {
-        color: @info !important;
+        color: @info_ !important;
       }
       i.declined {
         color: @danger !important;
@@ -329,7 +329,7 @@ div.tabs-space {
 }
 
 .forum_category header {
-  background-color: @info;
+  background-color: @info_;
 }
 
 .btn-group.bootstrap-select.form-control.dropup {
@@ -349,4 +349,23 @@ div.tabs-space {
       }
     }
   }
+}
+
+label.form-group-label {
+  &[required], &.required {
+    &:after {
+      content: ' *';
+      color: red;
+    }
+  }
+}
+
+form {
+  .error-summary {
+    color: red;
+  }
+}
+
+.redactor-toolbar {
+  z-index: inherit;
 }
