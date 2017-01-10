@@ -56,7 +56,7 @@ div.tabs-style-iconbox nav ul li::after {
     top: 0;
     right: -1px;
 }
-.tabs-style-iconbox nav ul > li.tab-current > a {
+.tabs-style-iconbox > nav > ul > li.tab-current > a {
     background: #2CC185;
     color: #fff!important;
 }

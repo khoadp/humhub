@@ -61,7 +61,7 @@
 	z-index: 100;
 }
 
-.tabs-style-iconbox nav ul li.tab-current a {
+.tabs-style-iconbox > nav > ul li.tab-current a {
 	background: #fff;
 	box-shadow: -1px 0 0 #fff;
 }

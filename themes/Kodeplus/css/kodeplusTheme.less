@@ -20,21 +20,21 @@ div.tabs-space {
     ul {
       li:hover {
         &::after {
-          border-bottom: 3px solid @info_;
+          border-bottom: 3px solid @info;
           height: @height0;
           width: @width0;
         }
       }
       li:active {
         &::after {
-          border-bottom: 3px solid @info_;
+          border-bottom: 3px solid @info;
           height: @height0;
           width: @width0;
         }
       }
       li:focus {
         &::after {
-          border-bottom: 3px solid @info_;
+          border-bottom: 3px solid @info;
           height: @height0;
           width: @width0;
         }
@@ -106,7 +106,7 @@ div.tabs-space {
 }
 
 .panel .top-bar {
-  background-color: @info_;
+  background-color: @info;
   span {
     color: white !important;
   }
@@ -151,7 +151,7 @@ div.tabs-space {
   color: white;
   .nav > li > a:hover,
   .nav > .open > a {
-    background-color: lighten(@info_, 10%);
+    background-color: lighten(@info, 10%);
   }
   .nav > .account {
     height: 50px;
@@ -272,7 +272,7 @@ div.tabs-space {
     border-top-color: @font4;
   }
   .btn-group > a {
-    background-color: lighten(@info_, 5%);
+    background-color: lighten(@info, 5%);
   }
   .btn-enter {
     background-color: lighten(@primary, 5%);
@@ -289,7 +289,7 @@ div.tabs-space {
     li {
       color: @font3;
       i.accepted {
-        color: @info_ !important;
+        color: @info !important;
       }
       i.declined {
         color: @danger !important;
@@ -329,7 +329,7 @@ div.tabs-space {
 }
 
 .forum_category header {
-  background-color: @info_;
+  background-color: @info;
 }
 
 .btn-group.bootstrap-select.form-control.dropup {
@@ -368,4 +368,8 @@ form {
 
 .redactor-toolbar {
   z-index: inherit;
+}
+
+.panel-profile-controls .tabs.tabs-style-iconbox.tabs-space {
+  z-index: 1000;
 }

@@ -3,7 +3,7 @@
 // --------------------------------------------------
 @default: #ededed;
 @primary: #708fa0;
-@info_: #6fdbe8;
+@info: #6fdbe8;
 @success: #97d271;
 @warning: #fdd198;
 @danger: #ff8989;
@@ -51,15 +51,15 @@
 
 /* Info */
 .colorInfo {
-  color: @info_ !important;
+  color: @info !important;
 }
 
 .backgroundInfo {
-  background: @info_ !important;
+  background: @info !important;
 }
 
 .borderInfo {
-  border-color: @info_ !important;
+  border-color: @info !important;
 }
 
 /* Success */
@@ -217,7 +217,7 @@ input[type=select] {
     }
   }
   .panel a {
-    color: @info_;
+    color: @info;
   }
   h1,
   h2 {
@@ -279,7 +279,7 @@ input[type=select] {
       top: 2px;
       right: 10px;
       a {
-        color: @info_ !important;
+        color: @info !important;
         font-size: 12px;
         font-weight: normal;
       }
@@ -435,7 +435,7 @@ input[type=select] {
     li {
       color: @font3;
       i.accepted {
-        color: @info_ !important;
+        color: @info !important;
       }
       i.declined {
         color: @danger !important;
@@ -522,7 +522,7 @@ input[type=select] {
     &:hover,
     &:active,
     &:focus {
-      border-bottom: 3px solid @info_;
+      border-bottom: 3px solid @info;
       background-color: @background1;
       color: @font3;
       text-decoration: none;
@@ -542,7 +542,7 @@ input[type=select] {
   }
 
   .nav > li > ul > li > a:hover, .nav > li > ul > li > a.active {
-    border-left: 3px solid @info_;
+    border-left: 3px solid @info;
     background-color: @background1;
     color: @font3;
   }
@@ -560,7 +560,7 @@ input[type=select] {
   .nav > li > a:hover,
   .nav .open > a,
   .nav > li.active {
-    border-bottom: 3px solid @info_;
+    border-bottom: 3px solid @info;
     background-color: @background1;
     color: @font3;
   }
@@ -632,13 +632,13 @@ input[type=select] {
   }
 
   li.new {
-    border-left: 3px solid lighten(@info_, 30%);
-    background-color: lighten(@info_, 30%);
+    border-left: 3px solid lighten(@info, 30%);
+    background-color: lighten(@info, 30%);
   }
   li:hover,
   li.selected {
     background-color: @background1;
-    border-left: 3px solid @info_;
+    border-left: 3px solid @info;
   }
 }
 
@@ -697,13 +697,13 @@ input[type=select] {
     .module-controls {
       font-size: 85%;
       a {
-        color: @info_;
+        color: @info;
       }
     }
   }
   .content {
     a {
-      color: @info_;
+      color: @info;
     }
   }
   .content .files a {
@@ -753,7 +753,7 @@ input[type=select] {
     }
     li:hover,
     li.selected {
-      border-left: 3px solid @info_;
+      border-left: 3px solid @info;
       background-color: @background1 !important;
     }
   }
@@ -792,7 +792,7 @@ input[type=select] {
       margin-left: 20px;
       font-size: 12px;
       .count {
-        color: @info_;
+        color: @info;
         font-weight: 600;
         font-size: 20px;
         line-height: 0.8em;
@@ -804,7 +804,7 @@ input[type=select] {
       font-size: 75%;
     }
     small a {
-      color: @info_;
+      color: @info;
     }
   }
 }
@@ -1074,7 +1074,7 @@ input[type=select] {
     }
     li:hover,
     li.selected {
-      border-left: 3px solid @info_;
+      border-left: 3px solid @info;
       color: #fff !important;
       background-color: darken(@primary, 5%) !important;
     }
@@ -1112,7 +1112,7 @@ input[type=select] {
     padding: 5px 15px;
     color: @font3;
     a {
-      color: @info_;
+      color: @info;
     }
   }
   .popover-navigation {
@@ -1163,7 +1163,7 @@ input[type=select] {
 
 .tab-content .tab-pane {
   a {
-    color: @info_;
+    color: @info;
   }
   .form-group {
     margin-bottom: 5px;
@@ -1311,30 +1311,30 @@ input[type=select] {
 }
 
 .btn-info {
-  background: @info_;
+  background: @info;
   color: white !important;
   &:hover,
   &:focus {
-    background: darken(@info_, 5%) !important;
+    background: darken(@info, 5%) !important;
     text-decoration: none;
   }
   &:active,
   &.active {
     outline: 0;
-    background: darken(@info_, 5%);
+    background: darken(@info, 5%);
   }
 }
 
 .btn-info[disabled],
 .btn-info.disabled {
-  background: lighten(@info_, 5%);
+  background: lighten(@info, 5%);
   &:hover,
   &:focus {
-    background: lighten(@info_, 5%);
+    background: lighten(@info, 5%);
   }
   &:active,
   &.active {
-    background: lighten(@info_, 5%) !important;
+    background: lighten(@info, 5%) !important;
   }
 }
 
@@ -1440,7 +1440,7 @@ input[type=select] {
   border: 2px solid @background2;
   box-shadow: none;
   &:focus {
-    border: 2px solid @info_;
+    border: 2px solid @info;
     outline: 0;
     box-shadow: none;
   }
@@ -1543,11 +1543,11 @@ a.label-default:hover {
 }
 
 .label-info {
-  background-color: @info_;
+  background-color: @info;
 }
 
 a.label-info:hover {
-  background: darken(@info_, 5%) !important;
+  background: darken(@info, 5%) !important;
 }
 
 .label-danger {
@@ -1559,11 +1559,11 @@ a.label-danger:hover {
 }
 
 .label-success {
-  background-color: @info_;
+  background-color: @info;
 }
 
 a.label-success:hover {
-  background: darken(@info_, 5%) !important;
+  background: darken(@info, 5%) !important;
 }
 
 .label-warning {
@@ -1649,7 +1649,7 @@ a.list-group-item.active:focus {
   z-index: 2;
   color: @font3;
   background-color: @background1;
-  border-left: 3px solid @info_ !important;
+  border-left: 3px solid @info !important;
 }
 
 //
@@ -1794,7 +1794,7 @@ a.list-group-item.active:focus {
 }
 
 .progress-bar-info {
-  background-color: @info_;
+  background-color: @info;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -1861,7 +1861,7 @@ table {
   }
   td {
     a:hover {
-      color: @info_;
+      color: @info;
     }
   }
 }
@@ -2013,7 +2013,7 @@ ul.tag_input {
 
 .userInput,
 .spaceInput {
-  background-color: @info_;
+  background-color: @info;
   font-weight: 600;
   color: #fff;
   border-radius: 3px;
@@ -2117,7 +2117,7 @@ ul.tag_input {
 }
 
 ul.tag_input.focus {
-  border: 2px solid @info_;
+  border: 2px solid @info;
   outline: 0;
   box-shadow: none;
 }
@@ -2344,7 +2344,7 @@ ul.tag_input.focus {
 // Flash message after saving
 .data-saved {
   padding-left: 10px;
-  color: @info_;
+  color: @info;
 }
 
 .wallFilterPanel {
@@ -2376,7 +2376,7 @@ ul.tour-list {
   li {
     padding-top: 5px;
     a {
-      color: @info_;
+      color: @info;
       .fa {
         width: 16px;
       }
@@ -2531,18 +2531,18 @@ textarea.placeholder {
 
 // atwho Plugin
 .atwho-view .cur {
-  border-left: 3px solid @info_;
+  border-left: 3px solid @info;
   background-color: #f7f7f7 !important;
 }
 
 .atwho-user,
 .atwho-space,
 .atwho-input a {
-  color: @info_;
+  color: @info;
 }
 
 .atwho-input a:hover {
-  color: @info_;
+  color: @info;
 }
 
 .atwho-view strong {
@@ -2576,7 +2576,7 @@ textarea.placeholder {
   .sk-spinner-three-bounce div {
     width: 12px;
     height: 12px;
-    background-color: @info_;
+    background-color: @info;
     border-radius: 100%;
     display: inline-block;
     -webkit-animation: sk-threeBounceDelay 1.4s infinite ease-in-out;
@@ -2697,7 +2697,7 @@ img.bounceIn {
   a:visited {
     background-color: inherit;
     text-decoration: none;
-    color: @info_ !important;
+    color: @info !important;
   }
   img {
     max-width: 100%;
@@ -2727,7 +2727,7 @@ img.bounceIn {
 }
 
 .md-editor.active {
-  border: 2px solid @info_ !important;
+  border: 2px solid @info !important;
 }
 
 //
@@ -2809,7 +2809,7 @@ img.bounceIn {
 
 // Flatelements
 .onoffswitch-inner:before {
-  background-color: @info_;
+  background-color: @info;
   color: #fff;
 }
 
@@ -2820,13 +2820,13 @@ img.bounceIn {
 }
 
 .regular-checkbox:checked + .regular-checkbox-box {
-  border: 2px solid @info_;
-  background: @info_;
+  border: 2px solid @info;
+  background: @info;
   color: white;
 }
 
 .regular-radio:checked + .regular-radio-button:after {
-  background: @info_;
+  background: @info;
 }
 
 .regular-radio:checked + .regular-radio-button {
@@ -2883,8 +2883,8 @@ img.bounceIn {
 .ui-state-active,
 .ui-widget-content .ui-state-active,
 .ui-widget-header .ui-state-active {
-  border: 1px solid @info_ !important;
-  background: lighten(@info_, 25%) !important;
+  border: 1px solid @info !important;
+  background: lighten(@info, 25%) !important;
 }
 
 /**** Share Widget ****/
