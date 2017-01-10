@@ -249,6 +249,8 @@ if (!isset($this->context->contentContainer)) {
 
     <?php echo \humhub\models\Setting::GetText('trackingHtmlCode'); ?>
     <?php $this->endBody() ?>
+
+
     <!-- start : facebook messenger -->
     <?php
     $language = 'en_us';
@@ -281,19 +283,73 @@ if (!isset($this->context->contentContainer)) {
 
     </script>
 
-    <div class="fb-messengermessageus"
-            messenger_app_id="<?= getenv('FACEBOOK_CLIENT_ID') ?>"
-            page_id="<?= getenv('FACEBOOK_MESSENGER_PAGE_ID') ?>"
-            color="blue"
-            size="large">
-    </div>
-    <style>
-        .fb-messengermessageus {
+    <style type="text/css">
+        .fb-messages {
             position: fixed;
-            bottom: 10px;
-            right: 10px;
+            bottom: 0;
+            right: 0;
+            z-index: 999999;
+        }
+
+        .fb-messages-outer {
+            position: relative;
+        }
+
+        #fb-messages-minimize {
+            background: #3b5998;
+            font-size: 14px;
+            color: #fff;
+            padding: 3px 10px;
+            position: absolute;
+            top: -34px;
+            left: -1px;
+            border: 1px solid #E9EAED;
+            cursor: pointer;
+        }
+
+        /* default hidden */
+        #fb-messages-facebook {
+            opacity: 0;
+        }
+
+        .fb-messages {
+            bottom: -300px;
+            right: -135px;
         }
     </style>
+    <div id='fb-root'></div>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                $('#fb-messages-minimize').click(function () {
+                    if ($('#fb-messages-facebook').css('opacity') == 0) {
+                        $('#fb-messages-facebook').css('opacity', 1);
+                        $('.fb-messages').animate({right: '0'}).animate({bottom: '0'});
+                    } else {
+                        $('.fb-messages').animate({bottom: '-300px'}).animate({right: '-135px'}, 400, function () {
+                            $('#fb-messages-facebook').css('opacity', 0)
+                        });
+                    }
+                })
+            });
+        })(jQuery);
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <div class="fb-messages">
+        <div class="fb-messages-outer">
+            <div id="fb-messages-minimize">Facebook chat</div>
+            <div id="fb-messages-facebook" class="fb-page" data-adapt-container-width="true" data-height="300" data-width="250"
+                 data-hide-cover="false" data-href="<?php echo getenv('FACEBOOK_MESSENGER_PAGE_URL') ?>" data-show-facepile="true"
+                 data-show-posts="false" data-small-header="false" data-tabs="messages"></div>
+        </div>
+    </div>
     <!-- end : facebook messenger -->
 
 
