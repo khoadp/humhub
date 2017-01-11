@@ -336,10 +336,10 @@ if (!isset($this->context->contentContainer)) {
     </script>
     <div class="fb-messages">
         <div class="fb-messages-outer">
-            <div id="fb-messages-minimize">Facebook chat</div>
+            <div id="fb-messages-minimize"><?php echo Yii::t('KodeplusSpaceModule.base', 'Facebook chat'); ?></div>
             <div id="fb-messages-facebook" class="fb-page" data-adapt-container-width="true" data-height="300" data-width="250"
                  data-hide-cover="false" data-href="<?php echo getenv('FACEBOOK_MESSENGER_PAGE_URL') ?>" data-show-facepile="true"
-                 data-show-posts="false" data-small-header="false" data-tabs="messages"></div>
+                 data-show-posts="false" data-small-header="true" data-tabs="messages,timeline,events"></div>
         </div>
     </div>
     <!-- end : facebook messenger -->
