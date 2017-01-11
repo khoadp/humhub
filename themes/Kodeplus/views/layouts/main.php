@@ -54,16 +54,12 @@ if (!isset($this->context->contentContainer)) {
         <?php $this->head() ?>
 
         <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!-- @formatter:off -->
         <!--[if lt IE 9]>
         <script src="<?php echo Yii::getAlias(" @web"); ?>/js/html5shiv.js"></script>
-        <
-        linkid = "ie-style"
-        href = "<?php echo Yii::getAlias("
-        @
-        web
-        "); ?>/css/ie.css"
-        rel = "stylesheet" / >
+        <link id= "ie-style" href= "<?php echo Yii::getAlias("@web"); ?>/css/ie.css" rel= "stylesheet" />
         <![endif]-->
+        <!-- @formatter:on -->
 
         <!--[if IE 9]>
         <link id="ie9style" href="<?php echo Yii::getAlias(" @web"); ?>/css/ie9.css" rel="stylesheet">
