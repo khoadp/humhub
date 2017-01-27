@@ -181,7 +181,7 @@ if ($space->isAdmin()) {
             <div class="row">
                 <div class="col-md-12">
                     <div class="pull-left">
-                        <?= \kodeplus\modules\kodeplus_space\widgets\Menu::widget(['space' => $space, 'template' => "@kodeplus/widgets/views/topNavigation"]); ?>
+                        <?= \kodeplus\modules\kodeplus_space\widgets\TopNavigation::widget(['space' => $space]); ?>
                     </div>
                     <!-- end: User statistics -->
 

@@ -38,17 +38,35 @@ $config = [
         ],
         'redis' => [
             'class' => 'yii\redis\Connection',
-            'hostname' => 'localhost',
+            'hostname' => getenv('REDIS_HOST'),
             'port' => 6379,
             'database' => 0
         ],
-
+        'cache' => [
+            'class' => 'yii\caching\MemCache',
+            'servers' => [
+                [
+                    'host' => getenv('MEMCACHED_HOST'),
+                    'port' => 11211,
+                    'weight' => 100,
+                ],
+            ],
+            'useMemcached' => true
+        ],
+        'db' => [
+            'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=' . getenv('DB_HOST') . ';dbname=' . getenv('DB_NAME'),
+            'username' => getenv('DB_USERNAME'),
+            'password' => getenv('DB_PASSWORD'),
+            'charset' => 'utf8',
+            'enableSchemaCache' => true
+        ],
     ],
     'bootstrap' => [
-        'kodeplus\modules\kodeplus_space\components\EventBootstrap',
-        'kodeplus\modules\kodeplus_user\components\EventBootstrap'
-
-    ]
+        'kodeplus\components\bootstrap\KodeplusCoreLoader',
+        'kodeplus\components\bootstrap\PrimaryColorLoader',
+        'kodeplus\components\bootstrap\SpaceEventLoader'
+    ],
 ];
 
 return $config;
