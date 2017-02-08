@@ -52,15 +52,7 @@ $config = [
                 ],
             ],
             'useMemcached' => true
-        ],
-        'db' => [
-            'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=' . getenv('DB_HOST') . ';dbname=' . getenv('DB_NAME'),
-            'username' => getenv('DB_USERNAME'),
-            'password' => getenv('DB_PASSWORD'),
-            'charset' => 'utf8',
-            'enableSchemaCache' => true
-        ],
+        ]
     ],
     'bootstrap' => [
         'kodeplus\components\bootstrap\KodeplusCoreLoader',
