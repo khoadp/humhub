@@ -1,0 +1,3 @@
+[submodule "protected/kodeplus"]
+	path = protected/kodeplus
+	url = git@github.com:khoadp/yocommunity.git
