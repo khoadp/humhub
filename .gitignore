@@ -32,3 +32,4 @@ favicon.ico
 /.settings
 /.buildpath
 /.project
+/.env
