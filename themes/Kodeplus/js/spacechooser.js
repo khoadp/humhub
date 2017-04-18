@@ -80,6 +80,21 @@ getMorePage('');
 
  }
  });*/
+
+function updateSpaceMenuSpacesHeight() {
+    var spaceMenuSpace = $('#space-menu-spaces');
+    var createSpaceBtn = $("#create-space-btn");
+    var windowHeight = $(window).height();
+
+    spaceMenuSpace.height(
+        windowHeight // window height
+        - spaceMenuSpace[0].getBoundingClientRect().top // position of space menu space with window
+        - createSpaceBtn.height() // create button height
+        - (createSpaceBtn.closest('li').width() - createSpaceBtn.width()) / 2 // create space button padding
+        - 2 // padding bottom
+    );
+}
+
 $(document).ready(function () {
 
     var chosen = []; // Array for visible space menu entries
@@ -96,11 +111,17 @@ $(document).ready(function () {
         function setFocus() {
             // set focus
             $('#space-menu-search').focus();
+
+            // update height
+            updateSpaceMenuSpacesHeight();
+
             // stop interval
             clearInterval(spaceFocus);
         }
 
-    })
+    });
+
+    $(window).on('resize', updateSpaceMenuSpacesHeight);
 
     /**
      * Show and navigate through spaces depends on user input
@@ -296,6 +317,4 @@ $(document).ready(function () {
         // set max-height property to show the nicescroll scrollbar
         $('#space-menu-spaces').css({ 'max-height': '400px' });
     }
-
-
 });
