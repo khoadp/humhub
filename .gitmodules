@@ -1,3 +1,6 @@
 [submodule "protected/kodeplus"]
 	path = protected/kodeplus
 	url = git@github.com:khoadp/yocommunity.git
+[submodule "protected/facebook"]
+	path = protected/facebook
+	url = https://khoadp@github.com/khoadp/facebook

@@ -1,10 +1,11 @@
 <?php
 
 Yii::setAlias('@kodeplus', '@app/kodeplus');
+Yii::setAlias('@facebook', '@app/facebook');
 
 $config = [
     'params' => [
-        'moduleAutoloadPaths' => ['@kodeplus/modules'],
+        'moduleAutoloadPaths' => ['@kodeplus/modules', '@facebook/modules'],
     ],
     'components' => [
         'authClientCollection' => [
@@ -55,6 +56,7 @@ $config = [
         ]
     ],
     'bootstrap' => [
+        'facebook\components\bootstrap\FacebookCoreLoader',
         'kodeplus\components\bootstrap\KodeplusCoreLoader',
         'kodeplus\components\bootstrap\PrimaryColorLoader',
         'kodeplus\components\bootstrap\SpaceEventLoader'
