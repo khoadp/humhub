@@ -2,3 +2,7 @@ div.required label:after {
     content: " *";
     //color: red;
 }
+
+.bootstrap-datetimepicker-widget a[data-action] {
+    padding: 0;
+}
