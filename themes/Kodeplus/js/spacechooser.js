@@ -86,7 +86,7 @@ function updateSpaceMenuSpacesHeight() {
     var createSpaceBtn = $("#create-space-btn");
     var windowHeight = $(window).height();
 
-    spaceMenuSpace.height(
+    spaceMenuSpace.css('max-height',
         windowHeight // window height
         - spaceMenuSpace[0].getBoundingClientRect().top // position of space menu space with window
         - createSpaceBtn.height() // create button height
